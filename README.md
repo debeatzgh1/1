@@ -142,7 +142,7 @@ footer{
   <div class="section">
     <h2>🔥 Top AI Guide</h2>
     <p><strong>How to Work Smarter, Not Harder with AI</strong></p>
-    <button class="btn" onclick="openDoc('https://docs.google.com/document/d/1sdrpMWndvFKiwBfzYa7mZE7TjJ-vaMYF/edit?usp=drivesdk&ouid=116845182021782803040&rtpof=true&sd=true')">
+    <button class="btn" onclick="openDoc('https://msha.ke/debeatzgh')">
       View in Page
     </button>
   </div>
@@ -199,7 +199,7 @@ footer{
 </div>
 
 <!-- FLOATING BUTTON -->
-<div class="floating" onclick="openDoc('https://msha.ke/debeatzgh')">
+<div class="floating" onclick="openDoc('https://form.jotform.com/241335470278053')">
   💬 Get Support
 </div>
 
