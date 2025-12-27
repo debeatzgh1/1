@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -142,7 +142,7 @@ footer{
   <div class="section">
     <h2>🔥 Top AI Guide</h2>
     <p><strong>How to Work Smarter, Not Harder with AI</strong></p>
-    <button class="btn" onclick="openDoc('https://docs.google.com/document/d/1D9_b4p374Av6KmnJu7WJ_-OdfUglaiNc/preview')">
+    <button class="btn" onclick="openDoc('https://docs.google.com/document/d/1sdrpMWndvFKiwBfzYa7mZE7TjJ-vaMYF/edit?usp=drivesdk&ouid=116845182021782803040&rtpof=true&sd=true')">
       View in Page
     </button>
   </div>
@@ -199,7 +199,7 @@ footer{
 </div>
 
 <!-- FLOATING BUTTON -->
-<div class="floating" onclick="openDoc('https://tally.so/r/3lWJZV')">
+<div class="floating" onclick="openDoc('https://msha.ke/debeatzgh')">
   💬 Get Support
 </div>
 
