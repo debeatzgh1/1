@@ -1,373 +1,261 @@
+                                         <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Creators Hub – Build with AI</title>
+
 <style>
-  /* 🌟 Fade Slide Animation */
-  @keyframes fadeSlideUp {
-    0% { opacity: 0; transform: translateY(0) translateX(20px); }
-    100% { opacity: 1; transform: translateY(0) translateX(0); }
-  }
+:root{
+  --primary:#2563eb;
+  --secondary:#16a34a;
+  --dark:#020617;
+}
 
-  /* ❤️ Heartbeat Animation */
-  @keyframes heartbeat {
-    0% { transform: scale(1); }
-    25% { transform: scale(1.08); }
-    50% { transform: scale(1); }
-    75% { transform: scale(1.08); }
-    100% { transform: scale(1); }
-  }
+body{
+  margin:0;
+  font-family:system-ui, Arial, sans-serif;
+  background:#f1f5f9;
+  color:#1e293b;
+}
 
-  .floating-btn-group {
-    animation: fadeSlideUp 0.6s ease-out;
-  }
+/* HERO */
+.hero{
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  color:white;
+  padding:60px 20px;
+  text-align:center;
+}
+.hero h1{margin:0;font-size:2.5rem;}
+.hero p{max-width:900px;margin:15px auto 0;}
 
-  /* Iframe Modal Styles */
-  #iframe-modal {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 115%;
-    background: rgba(0,0,0,0.6);
-    backdrop-filter: blur(4px);
-  }
+/* CONTAINER */
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:25px;
+}
 
-  .modal-content {
-    position: relative;
-    margin: 2% auto;
-    background: #fff;
-    border-radius: 16px;
-    width: 95%;
-    height: 90%;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-    overflow: hidden;
-    animation: fadeIn 0.3s ease;
-  }
+/* SECTIONS */
+.section{
+  background:white;
+  padding:25px;
+  margin-bottom:30px;
+  border-radius:14px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.05);
+}
+.section h2{color:var(--primary);}
 
-  #modal-iframe {
-    width: 100%;
-    height: 105%;
-    border: none;
-  }
+/* BUTTON */
+.btn{
+  padding:10px 18px;
+  background:var(--primary);
+  color:white;
+  border-radius:8px;
+  border:none;
+  cursor:pointer;
+  font-size:0.9rem;
+}
 
-  .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 18px;
-    font-size: 30px;
-    color: #333;
-    cursor: pointer;
-    transition: color 0.2s;
-    z-index: 10;
-  }
+/* ===== CAROUSEL ===== */
+.carousel{
+  position:relative;
+  overflow:hidden;
+}
+.carousel-track{
+  display:flex;
+  transition:transform 0.6s ease;
+}
+.slide{
+  min-width:100%;
+  padding:20px;
+}
+.card{
+  background:#f8fafc;
+  padding:25px;
+  border-radius:12px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.05);
+}
+.card h3{margin-top:0;color:#1d4ed8;}
 
-  .close-btn:hover {
-    color: #e11d48;
-  }
+.nav{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:#020617;
+  color:white;
+  border:none;
+  font-size:18px;
+  padding:10px 14px;
+  cursor:pointer;
+}
+.prev{left:10px;}
+.next{right:10px;}
 
-  @keyframes fadeIn {
-    from {opacity: 0; transform: translateY(-10px);}
-    to {opacity: 1; transform: translateY(0);}
-  }
+/* ===== IFRAME POPUP ===== */
+#viewer{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.85);
+  display:none;
+  z-index:9999;
+}
+#viewer iframe{
+  width:100%;
+  height:100%;
+  border:none;
+}
+#closeBtn{
+  position:absolute;
+  top:15px;
+  left:15px;
+  background:#ef4444;
+  color:white;
+  padding:10px 14px;
+  border-radius:50%;
+  cursor:pointer;
+  z-index:10000;
+}
+
+/* FLOATING BUTTON */
+.floating{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:var(--primary);
+  color:white;
+  padding:14px 18px;
+  border-radius:30px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);
+  cursor:pointer;
+  z-index:9998;
+}
+
+/* FOOTER */
+footer{
+  background:#020617;
+  color:#cbd5f5;
+  padding:30px;
+  text-align:center;
+}
 </style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Digital Creators Hub</h1>
+  <p>Build AI-powered digital assets, startups & online income from scratch.</p>
+</div>
+
+<div class="container">
+
+  <!-- SOCIALCREATOR CAROUSEL -->
+  <div class="section">
+    <h2>🌟 Featured Creator Resources</h2>
+
+    <div class="carousel">
+      <div class="carousel-track" id="track">
+
+        <div class="slide">
+          <div class="card">
+            <h3>Work Smarter with AI</h3>
+            <p>Boost productivity using AI-powered workflows.</p>
+            <button class="btn" onclick="openDoc('https://docs.google.com/document/d/1D9_b4p374Av6KmnJu7WJ_-OdfUglaiNc/preview')">View</button>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="card">
+            <h3>Build a Tech Business</h3>
+            <p>Everything needed to start a tech company.</p>
+            <button class="btn" onclick="openDoc('https://docs.google.com/document/d/1_vtKBb2IFPjPoGPlzSfbYdOPQKocy5kg/preview')">View</button>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="card">
+            <h3>Online Store Setup</h3>
+            <p>No skills required to start selling online.</p>
+            <button class="btn" onclick="openDoc('https://docs.google.com/document/d/1zwmOqkbaUtWm-o-Sgr6Wqmto5Irlmnsr/preview')">View</button>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="card">
+            <h3>Side Hustle from Scratch</h3>
+            <p>Turn ideas into income streams.</p>
+            <button class="btn" onclick="openDoc('https://docs.google.com/document/d/1nkIOxY4vhtCtZT2eJJHFqlGUypMUWTkB/preview')">View</button>
+          </div>
+        </div>
+
+      </div>
+
+      <button class="nav prev" onclick="prevSlide()">‹</button>
+      <button class="nav next" onclick="nextSlide()">›</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- IFRAME VIEWER -->
+<div id="viewer">
+  <div id="closeBtn" onclick="closeDoc()">✕</div>
+  <iframe id="docFrame"></iframe>
+</div>
+
+<!-- FLOATING SUPPORT -->
+<div class="floating" onclick="openDoc('https://tally.so/r/3lWJZV')">
+  💬 Get Support
+</div>
+
+<footer>
+  <p>© Digital Creators Hub – Debeatzgh</p>
+</footer>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
+/* IFRAME */
+function openDoc(url){
+  document.getElementById('docFrame').src = url;
+  document.getElementById('viewer').style.display = 'block';
+}
+function closeDoc(){
+  document.getElementById('docFrame').src = '';
+  document.getElementById('viewer').style.display = 'none';
+}
 
-  // 🔹 Floating Button at TOP-LEFT
-  const btnGroup = document.createElement("div");
-  btnGroup.className = "floating-btn-group";
-  Object.assign(btnGroup.style, {
-    position: "fixed",
-    top: "20px",          // Top-left positioning
-    left: "20px",
-    zIndex: "9999",
-    animation: "heartbeat 2.5s infinite ease-in-out, fadeSlideUp 0.6s ease-out forwards"
-  });
+/* AUTO OPEN ON PAGE LOAD */
+window.onload = function(){
+  setTimeout(()=>{
+    openDoc('https://docs.google.com/document/d/1D9_b4p374Av6KmnJu7WJ_-OdfUglaiNc/preview');
+  },1500);
+}
 
-  // -------------------------------------------------------
-  // 📌 Updates Button
-  // -------------------------------------------------------
-  const button = document.createElement("a");
-  button.href = "#";
-  button.innerText = "📌 Updates";
-  Object.assign(button.style, {
-    background: "#16a34a",
-    color: "#fff",
-    padding: "12px 24px",
-    borderRadius: "30px",
-    textDecoration: "none",
-    fontSize: "15px",
-    fontWeight: "700",
-    boxShadow: "0 4px 10px rgba(0,0,0,0.25)",
-    whiteSpace: "nowrap",
-  });
+/* CAROUSEL */
+let index=0;
+const track=document.getElementById('track');
+const slides=document.querySelectorAll('.slide');
 
-  // 🔹 Iframe Modal
-  const modal = document.createElement("div");
-  modal.id = "iframe-modal";
-  modal.innerHTML = `
-    <div class="modal-content">
-      <span class="close-btn">&times;</span>
-      <iframe id="modal-iframe" src="" loading="lazy"></iframe>
-    </div>
-  `;
+function updateSlide(){
+  track.style.transform=`translateX(-${index*100}%)`;
+}
+function nextSlide(){
+  index=(index+1)%slides.length;
+  updateSlide();
+}
+function prevSlide(){
+  index=(index-1+slides.length)%slides.length;
+  updateSlide();
+}
 
-  document.body.appendChild(modal);
-
-  // 🔹 Open Iframe on click
-  button.addEventListener("click", function (e) {
-    e.preventDefault();
-    document.getElementById("modal-iframe").src = "https://msha.ke/debeatzgh";
-    modal.style.display = "block";
-  });
-
-  btnGroup.appendChild(button);
-  document.body.appendChild(btnGroup);
-
-  // 🔹 Close Modal
-  document.addEventListener("click", function (e) {
-    if (e.target.classList.contains("close-btn") || e.target.id === "iframe-modal") {
-      modal.style.display = "none";
-      document.getElementById("modal-iframe").src = "";
-    }
-  });
-
-  // 🔹 Auto-open external ads in a new tab
-  document.getElementById("modal-iframe").addEventListener("load", function () {
-    try {
-      const links = this.contentDocument.querySelectorAll("a");
-      links.forEach(link => {
-        if (!link.href.includes("debeatzgh.wordpress.com")) {
-          link.setAttribute("target", "_blank");
-          link.setAttribute("rel", "noopener");
-        }
-      });
-    } catch (err) {
-      console.warn("External site - cannot rewrite links");
-    }
-  });
-
-});
+/* AUTO SLIDE */
+setInterval(nextSlide,5000);
 </script>
 
-
-# **👋 Hi, I'm David (DebeatzGH)**
-
-### *AI Tools Builder • UI/UX Creator • Digital Products Developer • Tech Blogger*
-
-<p align="center">
-  <img src="https://debeatzgh.wordpress.com/wp-content/uploads/2025/12/imagine_15462143230908918843052169799993526.jpg" width="140" style="border-radius:50%">
-</p>
-
----
-
-# **📚 Mini Blog Post Library (10–20 Posts)**
-
-### *A curated collection of my tutorials, ideas, tools & UI/UX content*
-
----
-
-## **📝 1. The Future of AI Tools for Creators**
-
-A breakdown of how creators can build income streams using micro automations, AI templates, and workflow tools.
-
----
-
-## **📝 2. 10 Profitable AI Side Hustles You Can Start Today**
-
-Easy-to-launch tech ideas for beginners, students, and creators using free and low-cost tools.
-
----
-
-## **📝 3. How to Build a Micro SaaS Using Only AI Tools**
-
-Step-by-step guide showing the workflow from idea → branding → landing page → automation.
-
----
-
-## **📝 4. UI/UX Widgets That Boost Landing Page Conversion**
-
-Top-performing design components with clean HTML/CSS examples.
-
----
-
-## **📝 5. My Weekly AI Tool Stack for Productivity & Design**
-
-The exact tools I use for automation, editing, research, and content.
-
----
-
-## **📝 6. How to Create Stunning Animated Buttons Using CSS**
-
-A detailed mini tutorial for developers who want to add playful micro-interactions.
-
----
-
-## **📝 7. Building Your First Online Digital Product Shop**
-
-A clean strategy showing setup, pricing, branding, and why GitHub Pages is perfect.
-
----
-
-## **📝 8. AI Prompts That Help Students & Creators Work Faster**
-
-A powerful list of prompts for writing, research, video scripts, and UI design.
-
----
-
-## **📝 9. Why Every Creator Needs a GitHub Pages Portfolio**
-
-A full explanation of how GitHub Pages can be used as a free website builder.
-
----
-
-## **📝 10. 5 UI Layouts You Can Copy for Your Next Project**
-
-Minimal, modern layouts with headers, hero sections, and CTA examples.
-
----
-
-## **📝 11. A Creator’s Guide to Automating Repetitive Tasks**
-
-Examples of tasks you can fully automate using AI + browser workflows.
-
----
-
-## **📝 12. How to Package & Sell Templates as Digital Products**
-
-A structured guide for designing, pricing, packaging, and promoting digital assets.
-
----
-
-## **📝 13. My Ultimate Blogging Starter Toolkit**
-
-Includes writing prompts, content templates, SEO tips, and automation hacks.
-
----
-
-## **📝 14. Turning Your Slides Into Professional Videos Automatically**
-
-Explains your slide-to-video AI tool concept and the workflow behind it.
-
----
-
-## **📝 15. UI/UX Mistakes Most Beginners Make (And How to Fix Them)**
-
-A simple way to redesign poor layouts into clean modern interfaces.
-
----
-
-## **📝 16. 20 GitHub Projects Every Beginner Should Try**
-
-A curated list to help students and new developers build real skills.
-
----
-
-## **📝 17. Creating a Brand Identity Using Only AI Tools**
-
-How to build logos, color palettes, typefaces, and mockups with free tools.
-
----
-
-## **📝 18. Unlocking the Power of GitHub for Non-Coders**
-
-Teaches beginners how to use GitHub for blogging, documentation, and websites.
-
----
-
-## **📝 19. Why Every UI/UX Designer Should Post on LinkedIn**
-
-Explains LinkedIn growth strategy with practical weekly posting ideas.
-
----
-
-## **📝 20. How to Build Your First Mini SaaS From 0 → 1**
-
-A complete beginner-friendly guide for your audience.
-
----
-
-# **🎨 What I Create**
-
-I design and build:
-
-* 🎨 **UI/UX Widgets**
-* 🖥 **Mini Landing Pages**
-* 🤖 **AI Tools & Automation Workflows**
-* 📝 **Tech + Side Hustle Tutorials**
-* 🎬 **Short Dev Videos**
-
----
-
-# **🧰 Tech Stack**
-
-<p align="center">
-<img src="https://img.shields.io/badge/HTML-FF4B23?style=for-the-badge&logo=html5&logoColor=white"/>
-<img src="https://img.shields.io/badge/CSS-254BDD?style=for-the-badge&logo=css3&logoColor=white"/>
-<img src="https://img.shields.io/badge/JavaScript-FCDC00?style=for-the-badge&logo=javascript&logoColor=black"/>
-<img src="https://img.shields.io/badge/AI_Tools-6A00FF?style=for-the-badge&logo=openai&logoColor=white"/>
-<img src="https://img.shields.io/badge/GitHub_Pages-000000?style=for-the-badge&logo=githubpages&logoColor=white"/>
-</p>
-
----
-
-# **⭐ Featured Projects**
-
-### 🔹 Side Hustle Starter Kit
-
-👉 [https://debeatzgh1.github.io/Side-hustle-starter-kit-/](https://debeatzgh1.github.io/Side-hustle-starter-kit-/)
-
-### 🔹 Curated AI Business & Product Guides
-
-👉 [https://debeatzgh1.github.io/Curated-Guides-for-Online-Business-AI-Product-Creation/](https://debeatzgh1.github.io/Curated-Guides-for-Online-Business-AI-Product-Creation/)
-
-### 🔹 Digital Products Affiliate Shop
-
-👉 [https://debeatzgh1.github.io/-My-Brand-Online-Digital-Products-Affiliate-Shop/](https://debeatzgh1.github.io/-My-Brand-Online-Digital-Products-Affiliate-Shop/)
-
----
-
-# **📬 Connect With Me**
-
-<p align="center">
-  <a href="https://www.linkedin.com/in/david-kumah-ab7392299">
-    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/>
-  </a>
-  <a href="https://debeatzgh1.github.io/">
-    <img src="https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=githubpages&logoColor=white"/>
-  </a>
-  <a href="https://beatzde4.blogspot.com/">
-    <img src="https://img.shields.io/badge/Blog-FF5722?style=for-the-badge&logo=blogger&logoColor=white"/>
-  </a>
-</p>
-
----
-
-# **🎯 Need a Custom UI, Landing Page, or AI Tool?**
-
-<p align="center">
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLSec8llbmfgq_2cVxpdk0M9zi2BtNUT4_IjqFVkbM1RCApV3Gw/viewform?usp=publish-editor">
-    <img src="https://img.shields.io/badge/Order%20a%20Custom%20Design-6C63FF?style=for-the-badge"/>
-  </a>
-</p>
-
----
-
-
----
-
-# 📂 Blogger Scripts Catalog
-
-![Blogger Scripts Catalog Cover](https://debeatzgh.wordpress.com/wp-content/uploads/2025/08/designacleanmodernthumbnailforabloggerproductscarouseltool1711994558720457535.jpg)
-
-A curated collection of **Blogger-friendly scripts, widgets, and templates** — designed to improve your blog’s design, engagement, and user experience.
-Each project comes with a **live GitHub Pages demo**, thumbnail, and quick action button so you can see the script in action.
-
----
-
-## 🚀 Live Catalog
-
-| Thumbnail                                                                                                                                                                                                                                                  | Project                                                                                                                                                      | Description                                                                                                         | Action                                                                                                           |
+</body>
+</html>
+                                                                                                                                                                | Project                                                                                                                                                      | Description                                                                                                         | Action                                                                                                           |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | ![Custom Blogger Theme](https://debeatzgh.wordpress.com/wp-content/uploads/2025/08/generateamobile-firstresponsivebloggertemplatewithcustomizablecolorsfontsandsections1576324612066211977.jpg)                                                            | **[Custom Blogger Theme with Dynamic Post Loading and Logo](https://debeatzgh1.github.io/Custom-Blogger-Theme-for-with-Dynamic-Post-Loading-and-Logo-/)**    | A responsive, mobile-first Blogger theme with customizable sections, dynamic post loading, and custom logo support. | [🔗 View Demo](https://debeatzgh1.github.io/Custom-Blogger-Theme-for-with-Dynamic-Post-Loading-and-Logo-/)       |
 | ![Popup Generator](https://debeatzgh.wordpress.com/wp-content/uploads/2025/08/createatoolthatgeneratesiframeorcard-styleembedsforindividualbloggerpostscompletewiththumbnailtitleandreadmorebuttonforcross-blogpromotion754077096311972631.jpg)            | **[Popup HTML Page Generator](https://debeatzgh1.github.io/popup-html-page-generator-blogger/)**                                                             | Easily generate iframe or card-style embeds for individual Blogger posts with thumbnails and read-more buttons.     | [🔗 View Demo](https://debeatzgh1.github.io/popup-html-page-generator-blogger/)                                  |
