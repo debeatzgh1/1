@@ -3,106 +3,80 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digital Creators Hub – Build with AI</title>
+<title>Digital Creators Hub – All-in-One AI Platform</title>
 
 <style>
 :root{
   --primary:#2563eb;
   --secondary:#16a34a;
   --dark:#020617;
-  --light:#f8fafc;
 }
-
 body{
   margin:0;
-  font-family:system-ui, Arial, sans-serif;
+  font-family:system-ui,Arial,sans-serif;
   background:#f1f5f9;
   color:#1e293b;
 }
-
-/* HERO */
 .hero{
   background:linear-gradient(135deg,var(--primary),var(--secondary));
-  color:white;
+  color:#fff;
   padding:60px 20px;
   text-align:center;
 }
-.hero h1{
-  font-size:2.5rem;
-  margin:0;
-}
-.hero p{
-  max-width:900px;
-  margin:15px auto 0;
-  font-size:1.1rem;
-}
-
-/* SECTIONS */
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:25px;
-}
+.container{max-width:1200px;margin:auto;padding:25px;}
 .section{
-  background:white;
+  background:#fff;
   padding:25px;
-  margin-bottom:25px;
+  margin-bottom:30px;
   border-radius:14px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.05);
+  box-shadow:0 10px 30px rgba(0,0,0,.05);
 }
-.section h2{
-  color:var(--primary);
-  margin-top:0;
-}
-
-/* GRID */
+.section h2{color:var(--primary);}
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:20px;
 }
-
-/* BUTTONS */
+.card{
+  background:#f8fafc;
+  padding:20px;
+  border-radius:12px;
+}
 .btn{
-  display:inline-block;
-  padding:10px 18px;
+  margin-top:10px;
+  padding:10px 16px;
   background:var(--primary);
   color:white;
+  border:none;
   border-radius:8px;
-  text-decoration:none;
-  font-size:0.9rem;
-  margin-top:10px;
   cursor:pointer;
+  font-size:.9rem;
 }
-.btn.secondary{ background:var(--secondary); }
 
-/* IFRAME MODAL */
+/* IFRAME VIEWER */
 #viewer{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,0.85);
+  background:rgba(0,0,0,.85);
   display:none;
   z-index:9999;
 }
-#viewer iframe{
-  width:100%;
-  height:100%;
-  border:none;
-}
-#closeBtn{
+#viewer iframe{width:100%;height:100%;border:none;}
+.control{
   position:absolute;
   top:15px;
-  left:15px;
-  background:#ef4444;
-  color:white;
   padding:10px 14px;
   border-radius:50%;
-  font-size:16px;
   cursor:pointer;
+  color:white;
   z-index:10000;
 }
+#closeBtn{left:15px;background:#ef4444;}
+#fullscreenBtn{right:15px;background:#020617;}
 
-/* FLOATING BUTTON */
+/* FLOATING */
+@keyframes heartbeat{0%{transform:scale(1)}14%{transform:scale(1.15)}28%{transform:scale(1)}}
+@keyframes bubble{0%{box-shadow:0 0 0 0 rgba(37,99,235,.6)}70%{box-shadow:0 0 0 25px rgba(37,99,235,0)}}
 .floating{
   position:fixed;
   bottom:20px;
@@ -111,112 +85,151 @@ body{
   color:white;
   padding:14px 18px;
   border-radius:30px;
-  font-size:14px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.3);
   cursor:pointer;
+  animation:heartbeat 2.5s infinite,bubble 3s infinite;
   z-index:9998;
 }
-
-/* FOOTER */
 footer{
   background:#020617;
   color:#cbd5f5;
   padding:30px;
   text-align:center;
-  font-size:0.9rem;
 }
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
 <div class="hero">
   <h1>Digital Creators Hub</h1>
-  <p>Treasure troves for startups, creators & entrepreneurs building AI-powered digital assets from scratch.</p>
+  <p>Treasure troves for startups, creators & entrepreneurs building successful digital assets from scratch using AI.</p>
 </div>
 
-<!-- CONTENT -->
 <div class="container">
 
-  <div class="section">
-    <h2>🔥 Top AI Guide</h2>
-    <p><strong>How to Work Smarter, Not Harder with AI</strong></p>
-    <button class="btn" onclick="openDoc('https://msha.ke/debeatzgh')">
-      View in Page
-    </button>
-  </div>
+<div class="section">
+<h2>🌟 Core Programs & Guides</h2>
+<div class="grid">
 
-  <div class="section">
-    <h2>📌 Explore Opportunities</h2>
-    <div class="grid">
+<div class="card">
+<h3>How to Work Smarter with AI</h3>
+<p>Boost productivity using artificial intelligence.</p>
+<button class="btn" onclick="openSmart('https://docs.google.com/document/d/1D9_b4p374Av6KmnJu7WJ_-OdfUglaiNc/preview')">Open</button>
+</div>
 
-      <div>
-        <h3>Tech Business Tools</h3>
-        <p>Everything you need to build a tech startup.</p>
-        <button class="btn" onclick="openDoc('https://docs.google.com/document/d/1_vtKBb2IFPjPoGPlzSfbYdOPQKocy5kg/preview')">View</button>
-      </div>
+<div class="card">
+<h3>Tech Business Tools & Ideas</h3>
+<p>Everything you need to build a tech startup.</p>
+<button class="btn" onclick="openSmart('https://docs.google.com/document/d/1_vtKBb2IFPjPoGPlzSfbYdOPQKocy5kg/preview')">Open</button>
+</div>
 
-      <div>
-        <h3>Own an Online Store</h3>
-        <p>No experience needed to start selling online.</p>
-        <button class="btn" onclick="openDoc('https://docs.google.com/document/d/1zwmOqkbaUtWm-o-Sgr6Wqmto5Irlmnsr/preview')">View</button>
-      </div>
+<div class="card">
+<h3>Own an Online Store</h3>
+<p>Anyone can start selling online.</p>
+<button class="btn" onclick="openSmart('https://docs.google.com/document/d/1zwmOqkbaUtWm-o-Sgr6Wqmto5Irlmnsr/preview')">Open</button>
+</div>
 
-      <div>
-        <h3>AI Marketing Agency</h3>
-        <p>Launch or collaborate in AI-driven marketing.</p>
-        <button class="btn" onclick="openDoc('https://docs.google.com/document/d/1HS-a0SsGU7VfCtbuhOvUoHYYPwhDKlBw/preview')">View</button>
-      </div>
+<div class="card">
+<h3>AI Marketing Agency</h3>
+<p>Start or collaborate on AI-driven marketing.</p>
+<button class="btn" onclick="openSmart('https://docs.google.com/document/d/1HS-a0SsGU7VfCtbuhOvUoHYYPwhDKlBw/preview')">Open</button>
+</div>
 
-      <div>
-        <h3>Side Hustle from Scratch</h3>
-        <p>Turn ideas into extra income streams.</p>
-        <button class="btn" onclick="openDoc('https://docs.google.com/document/d/1nkIOxY4vhtCtZT2eJJHFqlGUypMUWTkB/preview')">View</button>
-      </div>
+<div class="card">
+<h3>Work From Home Tools</h3>
+<p>Build digital assets with or without skills.</p>
+<button class="btn" onclick="openSmart('https://docs.google.com/document/d/1m09Dby3ZPvU_MXjTXCBvDvZO-iNm5c2E/preview')">Open</button>
+</div>
 
-      <div>
-        <h3>Affiliate Marketing</h3>
-        <p>Earn commissions promoting products.</p>
-        <button class="btn" onclick="openDoc('https://docs.google.com/document/d/1Z4dIhaLH-tXA0NCDngKezPMJ6e3mYa9t/preview')">View</button>
-      </div>
+<div class="card">
+<h3>Start an Online Business</h3>
+<p>Learn different online business models.</p>
+<button class="btn" onclick="openSmart('https://docs.google.com/document/d/1bEOxMCEmWALqqB0PUtaUxjA1-Wevdy1o/preview')">Open</button>
+</div>
 
-      <div>
-        <h3>Productivity with AI</h3>
-        <p>Stand out using AI-powered workflows.</p>
-        <button class="btn" onclick="openDoc('https://docs.google.com/document/d/1yTeRMaF8GEkTZf34EK7eOdxe6sCOCNxX/preview')">View</button>
-      </div>
+<div class="card">
+<h3>Become a Digital Creator</h3>
+<p>Turn creativity into income.</p>
+<button class="btn" onclick="openSmart('https://docs.google.com/document/d/1cfdz8HYxl8xzXWMA1KovKRcLAiwFn-gU/preview')">Open</button>
+</div>
 
-    </div>
-  </div>
+<div class="card">
+<h3>Freelancing Tools & Ideas</h3>
+<p>Work independently and choose your projects.</p>
+<button class="btn" onclick="openSmart('https://docs.google.com/document/d/1gZf-sA8TS6EhZPzBSyQjCtIE2BSlWANU/preview')">Open</button>
+</div>
+
+<div class="card">
+<h3>Blogging from Scratch</h3>
+<p>Start and grow a profitable blog.</p>
+<button class="btn" onclick="openSmart('https://docs.google.com/document/d/19qAFHPNvb3ZGcJAUS1dUgiq-fSJLQmoF/preview')">Open</button>
+</div>
+
+<div class="card">
+<h3>Affiliate Marketing</h3>
+<p>Earn commissions promoting products.</p>
+<button class="btn" onclick="openSmart('https://docs.google.com/document/d/1Z4dIhaLH-tXA0NCDngKezPMJ6e3mYa9t/preview')">Open</button>
+</div>
+
+<div class="card">
+<h3>Side Hustle from Scratch</h3>
+<p>Build extra income streams.</p>
+<button class="btn" onclick="openSmart('https://docs.google.com/document/d/1nkIOxY4vhtCtZT2eJJHFqlGUypMUWTkB/preview')">Open</button>
+</div>
+
+<div class="card">
+<h3>Productivity Tools with AI</h3>
+<p>Stand out using AI-powered workflows.</p>
+<button class="btn" onclick="openSmart('https://docs.google.com/document/d/1yTeRMaF8GEkTZf34EK7eOdxe6sCOCNxX/preview')">Open</button>
+</div>
+
+</div>
+</div>
 
 </div>
 
 <!-- IFRAME VIEWER -->
 <div id="viewer">
-  <div id="closeBtn" onclick="closeDoc()">✕</div>
+  <div id="closeBtn" class="control" onclick="closeDoc()">✕</div>
+  <div id="fullscreenBtn" class="control" onclick="toggleFullscreen()">⛶</div>
   <iframe id="docFrame"></iframe>
 </div>
 
-<!-- FLOATING BUTTON -->
-<div class="floating" onclick="openDoc('https://form.jotform.com/241335470278053')">
-  💬 Get Support
-</div>
+<div class="floating" onclick="openSmart('https://tally.so/r/3lWJZV')">💬 Get Support</div>
 
-<!-- FOOTER -->
 <footer>
   <p>© Digital Creators Hub – Debeatzgh</p>
-  <p>Build • Learn • Monetize with AI</p>
 </footer>
 
 <script>
-function openDoc(url){
-  document.getElementById('docFrame').src = url;
-  document.getElementById('viewer').style.display = 'block';
+function openSmart(url){
+  const frame=document.getElementById('docFrame');
+  frame.src=url;
+  document.getElementById('viewer').style.display='block';
+  setTimeout(()=>{
+    try{
+      if(!frame.contentDocument || frame.contentDocument.body.innerHTML.length<50){
+        window.open(url,'_blank');
+        closeDoc();
+      }
+    }catch(e){
+      window.open(url,'_blank');
+      closeDoc();
+    }
+  },1200);
 }
 function closeDoc(){
-  document.getElementById('docFrame').src = '';
-  document.getElementById('viewer').style.display = 'none';
+  document.getElementById('docFrame').src='';
+  document.getElementById('viewer').style.display='none';
+  if(document.fullscreenElement) document.exitFullscreen();
+}
+function toggleFullscreen(){
+  const viewer=document.getElementById('viewer');
+  if(!document.fullscreenElement){
+    viewer.requestFullscreen().catch(()=>{});
+  }else{
+    document.exitFullscreen();
+  }
 }
 </script>
 
