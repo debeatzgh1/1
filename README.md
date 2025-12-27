@@ -3,18 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digital Creators Hub – AI Powered</title>
+<title>Digital Creators Hub – Build with AI</title>
 
 <style>
 :root{
   --primary:#2563eb;
   --secondary:#16a34a;
   --dark:#020617;
+  --light:#f8fafc;
 }
 
 body{
   margin:0;
-  font-family:system-ui,Arial,sans-serif;
+  font-family:system-ui, Arial, sans-serif;
   background:#f1f5f9;
   color:#1e293b;
 }
@@ -22,75 +23,64 @@ body{
 /* HERO */
 .hero{
   background:linear-gradient(135deg,var(--primary),var(--secondary));
-  color:#fff;
+  color:white;
   padding:60px 20px;
   text-align:center;
 }
+.hero h1{
+  font-size:2.5rem;
+  margin:0;
+}
+.hero p{
+  max-width:900px;
+  margin:15px auto 0;
+  font-size:1.1rem;
+}
 
-/* LAYOUT */
-.container{max-width:1100px;margin:auto;padding:25px;}
-.section{
-  background:#fff;
+/* SECTIONS */
+.container{
+  max-width:1100px;
+  margin:auto;
   padding:25px;
-  margin-bottom:30px;
+}
+.section{
+  background:white;
+  padding:25px;
+  margin-bottom:25px;
   border-radius:14px;
-  box-shadow:0 10px 30px rgba(0,0,0,.05);
+  box-shadow:0 10px 30px rgba(0,0,0,0.05);
+}
+.section h2{
+  color:var(--primary);
+  margin-top:0;
 }
 
-/* BADGES */
-.badge{
-  display:inline-block;
-  font-size:11px;
-  padding:4px 8px;
-  border-radius:6px;
-  margin-right:5px;
-  color:#fff;
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
 }
-.ai{background:#6366f1;}
-.popular{background:#f59e0b;}
-.new{background:#16a34a;}
-.guide{background:#0ea5e9;}
 
-/* BUTTON */
+/* BUTTONS */
 .btn{
+  display:inline-block;
+  padding:10px 18px;
   background:var(--primary);
   color:white;
-  padding:10px 16px;
   border-radius:8px;
-  border:none;
-  cursor:pointer;
-  font-size:.9rem;
-}
-
-/* ===== CAROUSEL ===== */
-.carousel{position:relative;overflow:hidden;}
-.track{display:flex;transition:.6s ease;}
-.slide{min-width:100%;padding:10px;}
-.card{
-  background:#f8fafc;
-  padding:25px;
-  border-radius:12px;
-}
-
-/* NAV */
-.nav{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  background:#020617;
-  color:white;
-  padding:10px;
-  border:none;
+  text-decoration:none;
+  font-size:0.9rem;
+  margin-top:10px;
   cursor:pointer;
 }
-.prev{left:10px;}
-.next{right:10px;}
+.btn.secondary{ background:var(--secondary); }
 
-/* ===== IFRAME VIEWER ===== */
+/* IFRAME MODAL */
 #viewer{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.85);
+  background:rgba(0,0,0,0.85);
   display:none;
   z-index:9999;
 }
@@ -99,7 +89,7 @@ body{
   height:100%;
   border:none;
 }
-#close{
+#closeBtn{
   position:absolute;
   top:15px;
   left:15px;
@@ -107,10 +97,12 @@ body{
   color:white;
   padding:10px 14px;
   border-radius:50%;
+  font-size:16px;
   cursor:pointer;
+  z-index:10000;
 }
 
-/* FLOATING OVERLAY */
+/* FLOATING BUTTON */
 .floating{
   position:fixed;
   bottom:20px;
@@ -119,62 +111,82 @@ body{
   color:white;
   padding:14px 18px;
   border-radius:30px;
+  font-size:14px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);
   cursor:pointer;
-  box-shadow:0 10px 30px rgba(0,0,0,.3);
   z-index:9998;
 }
-.menu{
-  position:fixed;
-  bottom:80px;
-  right:20px;
-  background:white;
-  padding:15px;
-  border-radius:12px;
-  display:none;
-  box-shadow:0 10px 30px rgba(0,0,0,.2);
-}
-.menu button{
-  display:block;
-  width:100%;
-  margin-bottom:10px;
+
+/* FOOTER */
+footer{
+  background:#020617;
+  color:#cbd5f5;
+  padding:30px;
+  text-align:center;
+  font-size:0.9rem;
 }
 </style>
 </head>
 
 <body>
 
+<!-- HERO -->
 <div class="hero">
   <h1>Digital Creators Hub</h1>
-  <p>AI-powered tools, guides & digital assets for startups and creators</p>
+  <p>Treasure troves for startups, creators & entrepreneurs building AI-powered digital assets from scratch.</p>
 </div>
 
+<!-- CONTENT -->
 <div class="container">
 
-  <!-- SOCIALCREATOR CAROUSEL -->
   <div class="section">
-    <h2>🌟 Featured Resources</h2>
-    <div class="carousel">
-      <div class="track" id="track">
+    <h2>🔥 Top AI Guide</h2>
+    <p><strong>How to Work Smarter, Not Harder with AI</strong></p>
+    <button class="btn" onclick="openDoc('https://docs.google.com/document/d/1D9_b4p374Av6KmnJu7WJ_-OdfUglaiNc/preview')">
+      View in Page
+    </button>
+  </div>
 
-        <div class="slide">
-          <div class="card">
-            <span class="badge ai">AI</span><span class="badge popular">Popular</span>
-            <h3>Work Smarter with AI</h3>
-            <button class="btn" onclick="openSmart('https://docs.google.com/document/d/1D9_b4p374Av6KmnJu7WJ_-OdfUglaiNc/preview')">Open</button>
-          </div>
-        </div>
+  <div class="section">
+    <h2>📌 Explore Opportunities</h2>
+    <div class="grid">
 
-        <div class="slide">
-          <div class="card">
-            <span class="badge guide">Guide</span>
-            <h3>Build Tech Business</h3>
-            <button class="btn" onclick="openSmart('https://docs.google.com/document/d/1_vtKBb2IFPjPoGPlzSfbYdOPQKocy5kg/preview')">Open</button>
-          </div>
-        </div>
-
+      <div>
+        <h3>Tech Business Tools</h3>
+        <p>Everything you need to build a tech startup.</p>
+        <button class="btn" onclick="openDoc('https://docs.google.com/document/d/1_vtKBb2IFPjPoGPlzSfbYdOPQKocy5kg/preview')">View</button>
       </div>
-      <button class="nav prev" onclick="prev()">‹</button>
-      <button class="nav next" onclick="next()">›</button>
+
+      <div>
+        <h3>Own an Online Store</h3>
+        <p>No experience needed to start selling online.</p>
+        <button class="btn" onclick="openDoc('https://docs.google.com/document/d/1zwmOqkbaUtWm-o-Sgr6Wqmto5Irlmnsr/preview')">View</button>
+      </div>
+
+      <div>
+        <h3>AI Marketing Agency</h3>
+        <p>Launch or collaborate in AI-driven marketing.</p>
+        <button class="btn" onclick="openDoc('https://docs.google.com/document/d/1HS-a0SsGU7VfCtbuhOvUoHYYPwhDKlBw/preview')">View</button>
+      </div>
+
+      <div>
+        <h3>Side Hustle from Scratch</h3>
+        <p>Turn ideas into extra income streams.</p>
+        <button class="btn" onclick="openDoc('https://docs.google.com/document/d/1nkIOxY4vhtCtZT2eJJHFqlGUypMUWTkB/preview')">View</button>
+      </div>
+
+      <div>
+        <h3>Affiliate Marketing</h3>
+        <p>Earn commissions promoting products.</p>
+        <button class="btn" onclick="openDoc('https://docs.google.com/document/d/1Z4dIhaLH-tXA0NCDngKezPMJ6e3mYa9t/preview')">View</button>
+      </div>
+
+      <div>
+        <h3>Productivity with AI</h3>
+        <p>Stand out using AI-powered workflows.</p>
+        <button class="btn" onclick="openDoc('https://docs.google.com/document/d/1yTeRMaF8GEkTZf34EK7eOdxe6sCOCNxX/preview')">View</button>
+      </div>
+
     </div>
   </div>
 
@@ -182,56 +194,30 @@ body{
 
 <!-- IFRAME VIEWER -->
 <div id="viewer">
-  <div id="close" onclick="closeViewer()">✕</div>
-  <iframe id="frame"></iframe>
+  <div id="closeBtn" onclick="closeDoc()">✕</div>
+  <iframe id="docFrame"></iframe>
 </div>
 
-<!-- FLOATING OVERLAY -->
-<div class="floating" onclick="toggleMenu()">☰ Open</div>
-<div class="menu" id="menu">
-  <button class="btn" onclick="openSmart('https://tally.so/r/3lWJZV')">Support</button>
-  <button class="btn" onclick="openSmart('https://docs.google.com/document/d/1D9_b4p374Av6KmnJu7WJ_-OdfUglaiNc/preview')">Docs</button>
-  <button class="btn" onclick="openSmart('https://debeatzgh1.github.io/ai-chat/')">AI Assistant</button>
+<!-- FLOATING BUTTON -->
+<div class="floating" onclick="openDoc('https://tally.so/r/3lWJZV')">
+  💬 Get Support
 </div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© Digital Creators Hub – Debeatzgh</p>
+  <p>Build • Learn • Monetize with AI</p>
+</footer>
 
 <script>
-/* SMART IFRAME OPEN */
-function openSmart(url){
-  const frame=document.getElementById('frame');
-  frame.src=url;
-  document.getElementById('viewer').style.display='block';
-
-  setTimeout(()=>{
-    try{
-      if(frame.contentDocument===null){
-        window.open(url,'_blank');
-        closeViewer();
-      }
-    }catch(e){
-      window.open(url,'_blank');
-      closeViewer();
-    }
-  },1500);
+function openDoc(url){
+  document.getElementById('docFrame').src = url;
+  document.getElementById('viewer').style.display = 'block';
 }
-function closeViewer(){
-  document.getElementById('frame').src='';
-  document.getElementById('viewer').style.display='none';
+function closeDoc(){
+  document.getElementById('docFrame').src = '';
+  document.getElementById('viewer').style.display = 'none';
 }
-
-/* FLOATING MENU */
-function toggleMenu(){
-  const m=document.getElementById('menu');
-  m.style.display=m.style.display==='block'?'none':'block';
-}
-
-/* CAROUSEL */
-let i=0;
-const slides=document.querySelectorAll('.slide');
-const track=document.getElementById('track');
-function update(){track.style.transform=`translateX(-${i*100}%)`;}
-function next(){i=(i+1)%slides.length;update();}
-function prev(){i=(i-1+slides.length)%slides.length;update();}
-setInterval(next,5000);
 </script>
 
 </body>
