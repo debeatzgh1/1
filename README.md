@@ -97,7 +97,7 @@ tailwind.config = {
         <p class="mt-2 text-gray-600">Access all Debeatzgh tools, products & platforms.</p>
       </button>
 
-      <button onclick="openFrame('https://debeatzgh1.github.io/-My-Brand-Online-Digital-Products-Affiliate-Shop/')" class="p-6 rounded-xl shadow hover:shadow-lg transition text-left">
+      <button onclick="openFrame('https://docs.google.com/forms/d/e/1FAIpQLSdXCPUz1JBq0W8MHN9VOE0p6cnp5Wtr74Ox2gqLLyzKi0UwKA/viewform?usp=dialog')" class="p-6 rounded-xl shadow hover:shadow-lg transition text-left">
         <span class="bg-highlight text-white px-3 py-1 rounded-full text-sm">TOOLS</span>
         <h4 class="mt-4 font-heading text-xl font-semibold">Digital Tools</h4>
         <p class="mt-2 text-gray-600">AI prompts, resources & affiliate tools.</p>
