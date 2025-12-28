@@ -1,5 +1,3 @@
-<!doctype html>
-
 <style>
 /* ❤️ Heartbeat Animation */
 @keyframes heartbeat {
