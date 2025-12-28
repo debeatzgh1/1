@@ -325,7 +325,7 @@ footer{
         <div class="slide"><div class="card">
           <h3>Build a Tech Business</h3>
           <p>Everything needed to start a tech company.</p>
-          <button class="btn" onclick="openDoc('https://docs.google.com/document/d/1_vtKBb2IFPjPoGPlzSfbYdOPQKocy5kg/preview')">View</button>
+          <button class="btn" onclick="openDoc('https://docs.google.com/document/d/1sdrpMWndvFKiwBfzYa7mZE7TjJ-vaMYF/edit?usp=drivesdk&ouid=116845182021782803040&rtpof=true&sd=true')">View</button>
         </div></div>
 
         <div class="slide"><div class="card">
