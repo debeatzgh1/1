@@ -1,3 +1,5 @@
+<!doctype html>
+
 <style>
 /* ❤️ Heartbeat Animation */
 @keyframes heartbeat {
@@ -8,11 +10,12 @@
   100% { transform: scale(1); }
 }
 
-/* 🔘 Floating Button (TOP RIGHT– SMALL) */
+/* 🔘 Floating Button – RIGHT CENTER */
 .floating-btn {
   position: fixed;
-  top: 14px;
+  top: 50%;
   right: 14px;
+  transform: translateY(-50%);
   z-index: 9999;
   animation: heartbeat 1.8s infinite;
 }
@@ -20,8 +23,8 @@
 .floating-btn a {
   background: #1e90ff;
   color: #fff;
-  padding: 6px 9px;
-  border-radius: 14px;
+  padding: 6px 10px;
+  border-radius: 16px;
   font-size: 11px;
   font-weight: 600;
   text-decoration: none;
@@ -33,7 +36,7 @@
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.75);
   backdrop-filter: blur(4px);
   z-index: 99999;
 }
@@ -78,24 +81,20 @@
 }
 </style>
 
-
-
-
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-  /* 🌐 Pages (Milkshake – add more if needed) */
+  /* 🌐 WordPress Page */
   const pages = [
     "https://debeatzgh.wordpress.com/"
   ];
 
   let index = 0;
-  let autoPopup = true;
 
   /* 🔘 Floating Button */
   const floatBtn = document.createElement("div");
   floatBtn.className = "floating-btn";
-  floatBtn.innerHTML = `<a href="#">☕ Links</a>`;
+  floatBtn.innerHTML = `<a href="#">🌐 Open</a>`;
   document.body.appendChild(floatBtn);
 
   /* 🪟 Modal */
@@ -105,8 +104,8 @@ document.addEventListener("DOMContentLoaded", function () {
     <div class="modal-box">
       <div class="modal-toolbar">
         <div>
-          <button id="prevBtn">◀ Prev</button>
-          <button id="nextBtn">Next ▶</button>
+          <button id="prevBtn">◀</button>
+          <button id="nextBtn">▶</button>
         </div>
         <button id="closeBtn">✖</button>
       </div>
@@ -114,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <iframe
         id="modal-iframe"
         loading="lazy"
-        sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms"
+        sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms allow-modals"
         allow="autoplay; encrypted-media; picture-in-picture"
         referrerpolicy="no-referrer-when-downgrade">
       </iframe>
@@ -132,16 +131,15 @@ document.addEventListener("DOMContentLoaded", function () {
   function closeModal() {
     modal.style.display = "none";
     iframe.src = "";
-    autoPopup = false;
   }
 
-  /* 🔘 Button Click */
+  /* 🔘 Button Click ONLY */
   floatBtn.onclick = function (e) {
     e.preventDefault();
     openModal();
   };
 
-  /* ⏭ Navigation (future-ready) */
+  /* ⏭ Navigation (future ready) */
   document.getElementById("nextBtn").onclick = function () {
     index = (index + 1) % pages.length;
     openModal();
@@ -156,18 +154,8 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("closeBtn").onclick = closeModal;
   modal.onclick = e => e.target === modal && closeModal();
 
-  /* ⏱ Auto open every 6 seconds */
-  setInterval(function () {
-    if (autoPopup && modal.style.display !== "block") {
-      openModal();
-    }
-  }, 6000);
-
 });
 </script>
-
-
-</!doctype>
 
 
 <html lang="en">
