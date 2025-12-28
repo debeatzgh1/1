@@ -249,7 +249,7 @@ body{
   z-index:9999;
 }
 #viewer iframe{
-  width:100%;
+  width:95%;
   height:100%;
   border:none;
 }
@@ -319,7 +319,7 @@ footer{
         <div class="slide"><div class="card">
           <h3>Work Smarter with AI</h3>
           <p>Boost productivity using AI-powered workflows.</p>
-          <button class="btn" onclick="openDoc('https://docs.google.com/document/d/1D9_b4p374Av6KmnJu7WJ_-OdfUglaiNc/preview')">View</button>
+          <button class="btn" onclick="openDoc('https://docs.google.com/document/d/1sdrpMWndvFKiwBfzYa7mZE7TjJ-vaMYF/edit?usp=drivesdk&ouid=116845182021782803040&rtpof=true&sd=true')">View</button>
         </div></div>
 
         <div class="slide"><div class="card">
