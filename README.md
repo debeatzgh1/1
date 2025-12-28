@@ -99,11 +99,11 @@ tailwind.config = {
 
       <button onclick="openFrame('https://debeatzgh1.github.io/-My-Brand-Online-Digital-Products-Affiliate-Shop/')" class="p-6 rounded-xl shadow hover:shadow-lg transition text-left">
         <span class="bg-highlight text-white px-3 py-1 rounded-full text-sm">TOOLS</span>
-        <h4 class="mt-4 font-heading text-xl font-semibold">Digital Products</h4>
+        <h4 class="mt-4 font-heading text-xl font-semibold">Digital Tools</h4>
         <p class="mt-2 text-gray-600">AI prompts, resources & affiliate tools.</p>
       </button>
 
-      <button onclick="openFrame('https://debeatzgh1.github.io/The-Ultimate-Guide-to-Side-Hustle/')" class="p-6 rounded-xl shadow hover:shadow-lg transition text-left">
+      <button onclick="openFrame('https://debeatzgh1.github.io/debeatzgh/')" class="p-6 rounded-xl shadow hover:shadow-lg transition text-left">
         <span class="bg-secondary text-white px-3 py-1 rounded-full text-sm">GUIDE</span>
         <h4 class="mt-4 font-heading text-xl font-semibold">Side Hustle Playbook</h4>
         <p class="mt-2 text-gray-600">Proven ways to start earning online.</p>
@@ -120,7 +120,7 @@ tailwind.config = {
 </footer>
 
 <!-- FLOATING BUTTON -->
-<button onclick="openFrame('https://msha.ke/debeatzgh')" class="fixed bottom-6 right-6 bg-accent text-white w-14 h-14 rounded-full shadow-lg floating-btn text-2xl">
+<button onclick="openFrame('https://debeatzgh1.github.io/ai-chat/')" class="fixed bottom-6 right-6 bg-accent text-white w-14 h-14 rounded-full shadow-lg floating-btn text-2xl">
   ☰
 </button>
 
