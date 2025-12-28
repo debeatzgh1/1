@@ -58,18 +58,9 @@ body{
 }
 
 /* ===== CAROUSEL ===== */
-.carousel{
-  position:relative;
-  overflow:hidden;
-}
-.carousel-track{
-  display:flex;
-  transition:transform 0.6s ease;
-}
-.slide{
-  min-width:100%;
-  padding:20px;
-}
+.carousel{position:relative;overflow:hidden;}
+.carousel-track{display:flex;transition:transform 0.6s ease;}
+.slide{min-width:100%;padding:20px;}
 .card{
   background:#f8fafc;
   padding:25px;
@@ -105,17 +96,27 @@ body{
   height:100%;
   border:none;
 }
-#closeBtn{
-  position:absolute;
-  top:15px;
-  left:15px;
-  background:#ef4444;
-  color:white;
-  padding:10px 14px;
-  border-radius:50%;
-  cursor:pointer;
+
+/* 🔘 Bottom Controls */
+.viewer-controls{
+  position:fixed;
+  bottom:18px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:14px;
   z-index:10000;
 }
+
+.control-btn{
+  background:#020617;
+  color:white;
+  padding:12px 16px;
+  border-radius:50%;
+  font-size:18px;
+  cursor:pointer;
+}
+.close-btn{background:#ef4444}
 
 /* FLOATING BUTTON */
 .floating{
@@ -158,37 +159,29 @@ footer{
     <div class="carousel">
       <div class="carousel-track" id="track">
 
-        <div class="slide">
-          <div class="card">
-            <h3>Work Smarter with AI</h3>
-            <p>Boost productivity using AI-powered workflows.</p>
-            <button class="btn" onclick="openDoc('https://docs.google.com/document/d/1D9_b4p374Av6KmnJu7WJ_-OdfUglaiNc/preview')">View</button>
-          </div>
-        </div>
+        <div class="slide"><div class="card">
+          <h3>Work Smarter with AI</h3>
+          <p>Boost productivity using AI-powered workflows.</p>
+          <button class="btn" onclick="openDoc('https://docs.google.com/document/d/1D9_b4p374Av6KmnJu7WJ_-OdfUglaiNc/preview')">View</button>
+        </div></div>
 
-        <div class="slide">
-          <div class="card">
-            <h3>Build a Tech Business</h3>
-            <p>Everything needed to start a tech company.</p>
-            <button class="btn" onclick="openDoc('https://docs.google.com/document/d/1_vtKBb2IFPjPoGPlzSfbYdOPQKocy5kg/preview')">View</button>
-          </div>
-        </div>
+        <div class="slide"><div class="card">
+          <h3>Build a Tech Business</h3>
+          <p>Everything needed to start a tech company.</p>
+          <button class="btn" onclick="openDoc('https://docs.google.com/document/d/1_vtKBb2IFPjPoGPlzSfbYdOPQKocy5kg/preview')">View</button>
+        </div></div>
 
-        <div class="slide">
-          <div class="card">
-            <h3>Online Store Setup</h3>
-            <p>No skills required to start selling online.</p>
-            <button class="btn" onclick="openDoc('https://docs.google.com/document/d/1zwmOqkbaUtWm-o-Sgr6Wqmto5Irlmnsr/preview')">View</button>
-          </div>
-        </div>
+        <div class="slide"><div class="card">
+          <h3>Online Store Setup</h3>
+          <p>No skills required to start selling online.</p>
+          <button class="btn" onclick="openDoc('https://docs.google.com/document/d/1zwmOqkbaUtWm-o-Sgr6Wqmto5Irlmnsr/preview')">View</button>
+        </div></div>
 
-        <div class="slide">
-          <div class="card">
-            <h3>Side Hustle from Scratch</h3>
-            <p>Turn ideas into income streams.</p>
-            <button class="btn" onclick="openDoc('https://docs.google.com/document/d/1nkIOxY4vhtCtZT2eJJHFqlGUypMUWTkB/preview')">View</button>
-          </div>
-        </div>
+        <div class="slide"><div class="card">
+          <h3>Side Hustle from Scratch</h3>
+          <p>Turn ideas into income streams.</p>
+          <button class="btn" onclick="openDoc('https://docs.google.com/document/d/1nkIOxY4vhtCtZT2eJJHFqlGUypMUWTkB/preview')">View</button>
+        </div></div>
 
       </div>
 
@@ -201,8 +194,13 @@ footer{
 
 <!-- IFRAME VIEWER -->
 <div id="viewer">
-  <div id="closeBtn" onclick="closeDoc()">✕</div>
   <iframe id="docFrame"></iframe>
+
+  <!-- Bottom Middle Controls -->
+  <div class="viewer-controls">
+    <div class="control-btn" onclick="toggleFullscreen()">⛶</div>
+    <div class="control-btn close-btn" onclick="closeDoc()">✕</div>
+  </div>
 </div>
 
 <!-- FLOATING SUPPORT -->
@@ -225,31 +223,30 @@ function closeDoc(){
   document.getElementById('viewer').style.display = 'none';
 }
 
-/* AUTO OPEN ON PAGE LOAD */
-window.onload = function(){
-  setTimeout(()=>{
-    openDoc('https://docs.google.com/document/d/1D9_b4p374Av6KmnJu7WJ_-OdfUglaiNc/preview');
-  },1500);
+/* FULLSCREEN */
+function toggleFullscreen(){
+  const v = document.getElementById('viewer');
+  if(!document.fullscreenElement){
+    v.requestFullscreen().catch(()=>{});
+  }else{
+    document.exitFullscreen();
+  }
 }
+
+/* AUTO OPEN */
+window.onload = () => {
+  setTimeout(() => {
+    openDoc('https://docs.google.com/document/d/1D9_b4p374Av6KmnJu7WJ_-OdfUglaiNc/preview');
+  }, 1500);
+};
 
 /* CAROUSEL */
 let index=0;
 const track=document.getElementById('track');
 const slides=document.querySelectorAll('.slide');
-
-function updateSlide(){
-  track.style.transform=`translateX(-${index*100}%)`;
-}
-function nextSlide(){
-  index=(index+1)%slides.length;
-  updateSlide();
-}
-function prevSlide(){
-  index=(index-1+slides.length)%slides.length;
-  updateSlide();
-}
-
-/* AUTO SLIDE */
+function updateSlide(){track.style.transform=`translateX(-${index*100}%)`;}
+function nextSlide(){index=(index+1)%slides.length;updateSlide();}
+function prevSlide(){index=(index-1+slides.length)%slides.length;updateSlide();}
 setInterval(nextSlide,5000);
 </script>
 
