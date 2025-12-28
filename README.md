@@ -1,411 +1,156 @@
-<style>
-/* ❤️ Heartbeat Animation */
-@keyframes heartbeat {
-  0% { transform: scale(1); }
-  30% { transform: scale(1.1); }
-  50% { transform: scale(1); }
-  70% { transform: scale(1.15); }
-  100% { transform: scale(1); }
-}
-
-/* 🔘 Floating Button – RIGHT CENTER */
-.floating-btn {
-  position: fixed;
-  top: 50%;
-  right: 14px;
-  transform: translateY(-50%);
-  z-index: 9999;
-  animation: heartbeat 1.8s infinite;
-}
-
-.floating-btn a {
-  background: #1e90ff;
-  color: #fff;
-  padding: 6px 10px;
-  border-radius: 16px;
-  font-size: 11px;
-  font-weight: 600;
-  text-decoration: none;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
-}
-
-/* 🪟 Modal Overlay */
-#iframe-modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.75);
-  backdrop-filter: blur(4px);
-  z-index: 99999;
-}
-
-/* 📦 Modal Box */
-.modal-box {
-  position: relative;
-  margin: 2% auto;
-  width: 95%;
-  height: 92%;
-  background: #fff;
-  border-radius: 16px;
-  overflow: hidden;
-}
-
-/* 🧭 Toolbar */
-.modal-toolbar {
-  position: absolute;
-  top: 8px;
-  left: 10px;
-  right: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 10;
-}
-
-.modal-toolbar button {
-  background: #111;
-  color: #fff;
-  border: none;
-  padding: 7px 10px;
-  border-radius: 8px;
-  font-size: 12px;
-  cursor: pointer;
-}
-
-#modal-iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-</style>
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-  /* 🌐 WordPress Page */
-  const pages = [
-    "https://debeatzgh.wordpress.com/"
-  ];
-
-  let index = 0;
-
-  /* 🔘 Floating Button */
-  const floatBtn = document.createElement("div");
-  floatBtn.className = "floating-btn";
-  floatBtn.innerHTML = `<a href="#">🌐 Open</a>`;
-  document.body.appendChild(floatBtn);
-
-  /* 🪟 Modal */
-  const modal = document.createElement("div");
-  modal.id = "iframe-modal";
-  modal.innerHTML = `
-    <div class="modal-box">
-      <div class="modal-toolbar">
-        <div>
-          <button id="prevBtn">◀</button>
-          <button id="nextBtn">▶</button>
-        </div>
-        <button id="closeBtn">✖</button>
-      </div>
-
-      <iframe
-        id="modal-iframe"
-        loading="lazy"
-        sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms allow-modals"
-        allow="autoplay; encrypted-media; picture-in-picture"
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-    </div>
-  `;
-  document.body.appendChild(modal);
-
-  const iframe = document.getElementById("modal-iframe");
-
-  function openModal() {
-    iframe.src = pages[index];
-    modal.style.display = "block";
-  }
-
-  function closeModal() {
-    modal.style.display = "none";
-    iframe.src = "";
-  }
-
-  /* 🔘 Button Click ONLY */
-  floatBtn.onclick = function (e) {
-    e.preventDefault();
-    openModal();
-  };
-
-  /* ⏭ Navigation (future ready) */
-  document.getElementById("nextBtn").onclick = function () {
-    index = (index + 1) % pages.length;
-    openModal();
-  };
-
-  document.getElementById("prevBtn").onclick = function () {
-    index = (index - 1 + pages.length) % pages.length;
-    openModal();
-  };
-
-  /* ❌ Close */
-  document.getElementById("closeBtn").onclick = closeModal;
-  modal.onclick = e => e.target === modal && closeModal();
-
-});
-</script>
-
-
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digital Creators Hub – Build with AI</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Debeatzgh – AI Tools, Side Hustles & Digital Growth</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: '#0F2A44',
+        secondary: '#1E88E5',
+        accent: '#00C2A8',
+        highlight: '#6C63FF',
+        bg: '#F8FAFC'
+      },
+      fontFamily: {
+        heading: ['Poppins', 'sans-serif'],
+        body: ['Inter', 'sans-serif']
+      },
+      borderRadius: {
+        xl: '16px'
+      }
+    }
+  }
+}
+</script>
 
 <style>
-:root{
-  --primary:#2563eb;
-  --secondary:#16a34a;
-  --dark:#020617;
+@keyframes pulseSoft {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
 }
-
-body{
-  margin:0;
-  font-family:system-ui, Arial, sans-serif;
-  background:#f1f5f9;
-  color:#1e293b;
-}
-
-/* HERO */
-.hero{
-  background:linear-gradient(135deg,var(--primary),var(--secondary));
-  color:white;
-  padding:60px 20px;
-  text-align:center;
-}
-.hero h1{margin:0;font-size:2.5rem;}
-.hero p{max-width:900px;margin:15px auto 0;}
-
-/* CONTAINER */
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:25px;
-}
-
-/* SECTIONS */
-.section{
-  background:white;
-  padding:25px;
-  margin-bottom:30px;
-  border-radius:14px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.05);
-}
-.section h2{color:var(--primary);}
-
-/* BUTTON */
-.btn{
-  padding:10px 18px;
-  background:var(--primary);
-  color:white;
-  border-radius:8px;
-  border:none;
-  cursor:pointer;
-  font-size:0.9rem;
-}
-
-/* ===== CAROUSEL ===== */
-.carousel{position:relative;overflow:hidden;}
-.carousel-track{display:flex;transition:transform 0.6s ease;}
-.slide{min-width:100%;padding:20px;}
-.card{
-  background:#f8fafc;
-  padding:25px;
-  border-radius:12px;
-  box-shadow:0 6px 18px rgba(0,0,0,0.05);
-}
-.card h3{margin-top:0;color:#1d4ed8;}
-
-.nav{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  background:#020617;
-  color:white;
-  border:none;
-  font-size:18px;
-  padding:10px 14px;
-  cursor:pointer;
-}
-.prev{left:10px;}
-.next{right:10px;}
-
-/* ===== IFRAME POPUP ===== */
-#viewer{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.85);
-  display:none;
-  z-index:9999;
-}
-#viewer iframe{
-  width:95%;
-  height:100%;
-  border:none;
-}
-
-/* 🔘 Bottom Controls */
-.viewer-controls{
-  position:fixed;
-  bottom:18px;
-  left:50%;
-  transform:translateX(-50%);
-  display:flex;
-  gap:14px;
-  z-index:10000;
-}
-
-.control-btn{
-  background:#020617;
-  color:white;
-  padding:12px 16px;
-  border-radius:50%;
-  font-size:18px;
-  cursor:pointer;
-}
-.close-btn{background:#ef4444}
-
-/* FLOATING BUTTON */
-.floating{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:var(--primary);
-  color:white;
-  padding:14px 18px;
-  border-radius:30px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.3);
-  cursor:pointer;
-  z-index:9998;
-}
-
-/* FOOTER */
-footer{
-  background:#020617;
-  color:#cbd5f5;
-  padding:30px;
-  text-align:center;
+.floating-btn {
+  animation: pulseSoft 1.8s infinite;
 }
 </style>
 </head>
 
-<body>
+<body class="bg-bg font-body text-gray-800">
+
+<!-- NAVBAR -->
+<header class="sticky top-0 z-50 bg-white shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+    <a href="https://debeatzgh1.github.io/Home-/" class="text-2xl font-heading font-bold text-primary">Debeatzgh</a>
+    <nav class="hidden md:flex gap-8 font-medium">
+      <a href="https://debeatzgh1.github.io/Home-/" class="hover:text-secondary">Home</a>
+      <a href="https://debeatzgh1.github.io/-My-Brand-Online-Digital-Products-Affiliate-Shop/" class="hover:text-secondary">Products</a>
+      <a href="https://debeatzgh1.github.io/The-Ultimate-Guide-to-Side-Hustle/" class="hover:text-secondary">Side Hustle Guide</a>
+      <a href="https://www.facebook.com/Debeatzgh" class="hover:text-secondary" target="_blank">Facebook</a>
+    </nav>
+    <a href="https://www.facebook.com/debeatz4" target="_blank" class="bg-secondary text-white px-5 py-2 rounded-xl shadow hover:scale-105 transition">
+      Shop & Tools
+    </a>
+  </div>
+</header>
 
 <!-- HERO -->
-<div class="hero">
-  <h1>Digital Creators Hub</h1>
-  <p>Build AI-powered digital assets, startups & online income from scratch.</p>
-</div>
-
-<div class="container">
-
-  <!-- SOCIALCREATOR CAROUSEL -->
-  <div class="section">
-    <h2>🌟 Featured Creator Resources</h2>
-
-    <div class="carousel">
-      <div class="carousel-track" id="track">
-
-        <div class="slide"><div class="card">
-          <h3>Work Smarter with AI</h3>
-          <p>Boost productivity using AI-powered workflows.</p>
-          <button class="btn" onclick="openDoc('https://docs.google.com/document/d/1sdrpMWndvFKiwBfzYa7mZE7TjJ-vaMYF/edit?usp=drivesdk&ouid=116845182021782803040&rtpof=true&sd=true')">View</button>
-        </div></div>
-
-        <div class="slide"><div class="card">
-          <h3>Build a Tech Business</h3>
-          <p>Everything needed to start a tech company.</p>
-          <button class="btn" onclick="openDoc('https://docs.google.com/document/d/1sdrpMWndvFKiwBfzYa7mZE7TjJ-vaMYF/edit?usp=drivesdk&ouid=116845182021782803040&rtpof=true&sd=true')">View</button>
-        </div></div>
-
-        <div class="slide"><div class="card">
-          <h3>Online Store Setup</h3>
-          <p>No skills required to start selling online.</p>
-          <button class="btn" onclick="openDoc('https://docs.google.com/document/d/1zwmOqkbaUtWm-o-Sgr6Wqmto5Irlmnsr/preview')">View</button>
-        </div></div>
-
-        <div class="slide"><div class="card">
-          <h3>Side Hustle from Scratch</h3>
-          <p>Turn ideas into income streams.</p>
-          <button class="btn" onclick="openDoc('https://docs.google.com/document/d/1nkIOxY4vhtCtZT2eJJHFqlGUypMUWTkB/preview')">View</button>
-        </div></div>
-
-      </div>
-
-      <button class="nav prev" onclick="prevSlide()">‹</button>
-      <button class="nav next" onclick="nextSlide()">›</button>
+<section class="max-w-7xl mx-auto px-4 py-20 grid md:grid-cols-2 gap-12 items-center">
+  <div>
+    <h2 class="text-4xl md:text-5xl font-heading font-bold text-primary leading-tight">
+      Build Income with <span class="text-secondary">AI Tools</span> & Smart Side Hustles
+    </h2>
+    <p class="mt-6 text-lg text-gray-600">
+      Explore AI tools, growth guides, and curated side hustle resources to help you earn online — whether you're a beginner or growing entrepreneur.
+    </p>
+    <div class="mt-8 flex gap-4">
+      <a href="https://debeatzgh1.github.io/-My-Brand-Online-Digital-Products-Affiliate-Shop/" class="bg-secondary text-white px-6 py-3 rounded-xl shadow hover:scale-105 transition">
+        View Digital Products
+      </a>
+      <a href="https://debeatzgh1.github.io/The-Ultimate-Guide-to-Side-Hustle/" class="border border-secondary text-secondary px-6 py-3 rounded-xl hover:bg-secondary hover:text-white transition">
+        Read Side Hustle Guide
+      </a>
     </div>
   </div>
 
-</div>
-
-<!-- IFRAME VIEWER -->
-<div id="viewer">
-  <iframe id="docFrame"></iframe>
-
-  <!-- Bottom Middle Controls -->
-  <div class="viewer-controls">
-    <div class="control-btn" onclick="toggleFullscreen()">⛶</div>
-    <div class="control-btn close-btn" onclick="closeDoc()">✕</div>
+  <div class="bg-white rounded-xl shadow-lg p-6">
+    <img src="https://images.unsplash.com/photo-1674027444485-cec3da58eef4" class="rounded-xl" alt="AI Digital Growth">
   </div>
-</div>
+</section>
 
-<!-- FLOATING SUPPORT -->
-<div class="floating" onclick="openDoc('https://form.jotform.com/241335470278053')">
-  💬 Get Support
-</div>
+<!-- FEATURES -->
+<section class="bg-white py-16">
+  <div class="max-w-7xl mx-auto px-4">
+    <h3 class="text-3xl font-heading font-semibold text-center text-primary">
+      What You’ll Find on Debeatzgh
+    </h3>
 
-<footer>
-  <p>© Digital Creators Hub – Debeatzgh</p>
+    <div class="grid md:grid-cols-3 gap-8 mt-12">
+      <div class="p-6 rounded-xl shadow hover:shadow-lg transition">
+        <span class="inline-block bg-accent text-white px-3 py-1 rounded-full text-sm mb-4">AI 💡</span>
+        <h4 class="font-heading text-xl font-semibold">AI Tools & Resources</h4>
+        <p class="mt-3 text-gray-600">
+          Discover tools that automate tasks, generate content, and help you scale faster.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-xl shadow hover:shadow-lg transition">
+        <span class="inline-block bg-highlight text-white px-3 py-1 rounded-full text-sm mb-4">GUIDES 📘</span>
+        <h4 class="font-heading text-xl font-semibold">Blogs & How-Tos</h4>
+        <p class="mt-3 text-gray-600">
+          Learn step-by-step strategies for blogging, marketing, and earning online.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-xl shadow hover:shadow-lg transition">
+        <span class="inline-block bg-secondary text-white px-3 py-1 rounded-full text-sm mb-4">HUSTLES 🚀</span>
+        <h4 class="font-heading text-xl font-semibold">Side Hustle Strategies</h4>
+        <p class="mt-3 text-gray-600">
+          Actionable side hustle ideas you can start without heavy investment.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="bg-secondary py-16 text-center text-white">
+  <h3 class="text-3xl font-heading font-semibold">
+    Ready to Build Your Digital Income?
+  </h3>
+  <p class="mt-4 text-lg opacity-90">
+    Start with tools, guides, and opportunities curated for growth-focused creators and hustlers.
+  </p>
+  <a href="https://www.facebook.com/Debeatzgh" target="_blank" class="inline-block mt-8 bg-white text-secondary px-8 py-3 rounded-xl font-semibold hover:scale-105 transition">
+    Join Our Community
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-primary text-gray-300 py-10">
+  <div class="max-w-7xl mx-auto px-4 text-center">
+    <h4 class="font-heading text-xl text-white">Debeatzgh</h4>
+    <p class="mt-3 text-sm">AI Tools • Blogging • Side Hustles • Digital Growth</p>
+    <p class="mt-6 text-xs opacity-70">© 2025 Debeatzgh. All rights reserved.</p>
+    <div class="mt-4 space-x-4 text-sm">
+      <a href="https://www.facebook.com/Debeatzgh" target="_blank" class="hover:text-white">Facebook Page</a>
+      <a href="https://www.facebook.com/debeatz4" target="_blank" class="hover:text-white">Products Page</a>
+    </div>
+  </div>
 </footer>
 
-<script>
-/* IFRAME */
-function openDoc(url){
-  document.getElementById('docFrame').src = url;
-  document.getElementById('viewer').style.display = 'block';
-}
-function closeDoc(){
-  document.getElementById('docFrame').src = '';
-  document.getElementById('viewer').style.display = 'none';
-}
-
-/* FULLSCREEN */
-function toggleFullscreen(){
-  const v = document.getElementById('viewer');
-  if(!document.fullscreenElement){
-    v.requestFullscreen().catch(()=>{});
-  }else{
-    document.exitFullscreen();
-  }
-}
-
-/* AUTO OPEN */
-window.onload = () => {
-  setTimeout(() => {
-    openDoc('https://docs.google.com/document/d/1D9_b4p374Av6KmnJu7WJ_-OdfUglaiNc/preview');
-  }, 1500);
-};
-
-/* CAROUSEL */
-let index=0;
-const track=document.getElementById('track');
-const slides=document.querySelectorAll('.slide');
-function updateSlide(){track.style.transform=`translateX(-${index*100}%)`;}
-function nextSlide(){index=(index+1)%slides.length;updateSlide();}
-function prevSlide(){index=(index-1+slides.length)%slides.length;updateSlide();}
-setInterval(nextSlide,5000);
-</script>
+<!-- FLOATING BUTTON -->
+<a href="https://debeatzgh1.github.io/Home-/" class="fixed bottom-6 right-6 bg-accent text-white w-14 h-14 rounded-full shadow-lg floating-btn text-2xl flex items-center justify-center">
+  ⚡
+</a>
 
 </body>
 </html>
