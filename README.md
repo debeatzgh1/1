@@ -1,4 +1,181 @@
-<!DOCTYPE html>
+<!doctype html>
+
+
+
+
+
+<style>
+/* ❤️ Heartbeat Animation */
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.1); }
+  50% { transform: scale(1); }
+  70% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+/* 🔘 Floating Button (TOP RIGHT– SMALL) */
+.floating-btn {
+  position: fixed;
+  top: 14px;
+  right: 14px;
+  z-index: 9999;
+  animation: heartbeat 1.8s infinite;
+}
+
+.floating-btn a {
+  background: #1e90ff;
+  color: #fff;
+  padding: 6px 9px;
+  border-radius: 14px;
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+/* 🪟 Modal Overlay */
+#iframe-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(4px);
+  z-index: 99999;
+}
+
+/* 📦 Modal Box */
+.modal-box {
+  position: relative;
+  margin: 2% auto;
+  width: 95%;
+  height: 92%;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* 🧭 Toolbar */
+.modal-toolbar {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+.modal-toolbar button {
+  background: #111;
+  color: #fff;
+  border: none;
+  padding: 7px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+#modal-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+</style>
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  /* 🌐 Pages (Milkshake – add more if needed) */
+  const pages = [
+    "https://msha.ke/debeatzgh"
+  ];
+
+  let index = 0;
+  let autoPopup = true;
+
+  /* 🔘 Floating Button */
+  const floatBtn = document.createElement("div");
+  floatBtn.className = "floating-btn";
+  floatBtn.innerHTML = `<a href="#">☕ Links</a>`;
+  document.body.appendChild(floatBtn);
+
+  /* 🪟 Modal */
+  const modal = document.createElement("div");
+  modal.id = "iframe-modal";
+  modal.innerHTML = `
+    <div class="modal-box">
+      <div class="modal-toolbar">
+        <div>
+          <button id="prevBtn">◀ Prev</button>
+          <button id="nextBtn">Next ▶</button>
+        </div>
+        <button id="closeBtn">✖</button>
+      </div>
+
+      <iframe
+        id="modal-iframe"
+        loading="lazy"
+        sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  `;
+  document.body.appendChild(modal);
+
+  const iframe = document.getElementById("modal-iframe");
+
+  function openModal() {
+    iframe.src = pages[index];
+    modal.style.display = "block";
+  }
+
+  function closeModal() {
+    modal.style.display = "none";
+    iframe.src = "";
+    autoPopup = false;
+  }
+
+  /* 🔘 Button Click */
+  floatBtn.onclick = function (e) {
+    e.preventDefault();
+    openModal();
+  };
+
+  /* ⏭ Navigation (future-ready) */
+  document.getElementById("nextBtn").onclick = function () {
+    index = (index + 1) % pages.length;
+    openModal();
+  };
+
+  document.getElementById("prevBtn").onclick = function () {
+    index = (index - 1 + pages.length) % pages.length;
+    openModal();
+  };
+
+  /* ❌ Close */
+  document.getElementById("closeBtn").onclick = closeModal;
+  modal.onclick = e => e.target === modal && closeModal();
+
+  /* ⏱ Auto open every 6 seconds */
+  setInterval(function () {
+    if (autoPopup && modal.style.display !== "block") {
+      openModal();
+    }
+  }, 6000);
+
+});
+</script>
+
+
+</!doctype>
+
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
