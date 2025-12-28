@@ -1,9 +1,3 @@
-<!doctype html>
-
-
-
-
-
 <style>
 /* ❤️ Heartbeat Animation */
 @keyframes heartbeat {
@@ -92,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /* 🌐 Pages (Milkshake – add more if needed) */
   const pages = [
-    "https://msha.ke/debeatzgh"
+    "https://debeatzgh.wordpress.com/"
   ];
 
   let index = 0;
@@ -381,7 +375,7 @@ footer{
 </div>
 
 <!-- FLOATING SUPPORT -->
-<div class="floating" onclick="openDoc('https://tally.so/r/3lWJZV')">
+<div class="floating" onclick="openDoc('https://form.jotform.com/241335470278053')">
   💬 Get Support
 </div>
 
