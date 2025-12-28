@@ -91,7 +91,7 @@ tailwind.config = {
     </h3>
 
     <div class="grid md:grid-cols-3 gap-8 mt-12">
-      <button onclick="openFrame('https://msha.ke/debeatzgh')" class="p-6 rounded-xl shadow hover:shadow-lg transition text-left">
+      <button onclick="openFrame('https://debeatzgh.wordpress.com/')" class="p-6 rounded-xl shadow hover:shadow-lg transition text-left">
         <span class="bg-accent text-white px-3 py-1 rounded-full text-sm">HUB</span>
         <h4 class="mt-4 font-heading text-xl font-semibold">Central Link Hub</h4>
         <p class="mt-2 text-gray-600">Access all Debeatzgh tools, products & platforms.</p>
