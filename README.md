@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> Multi-Tab Launcher</title>
+<title>Multi-Tab Launcher</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
@@ -132,13 +132,13 @@ const frame = document.getElementById("frame");
 const tabs = document.querySelectorAll(".tab");
 const mobileTabs = document.querySelectorAll(".mobile-tab");
 
-/* ✅ URL MAP (UNCHANGED URLs) */
+/* ✅ URL MAP (FIXED KEYS – SAME URLs) */
 const URLS = {
   wordpress: "https://msha.ke/debeatzgh/",
-  Tools: "https://debeatzgh1.github.io/debeatzgh/",
+  blogger: "https://debeatzgh1.github.io/debeatzgh/",
   slides: "https://docs.google.com/document/d/1yTeRMaF8GEkTZf34EK7eOdxe6sCOCNxX/edit?usp=drivesdk&ouid=116845182021782803040&rtpof=true&sd=true",
   sign: "https://docs.google.com/forms/d/e/1FAIpQLSdXCPUz1JBq0W8MHN9VOE0p6cnp5Wtr74Ox2gqLLyzKi0UwKA/viewform",
-  sugg: "https://form.jotform.com/241335470278053"
+  about: "https://form.jotform.com/241335470278053"
 };
 
 let historyStack = [];
