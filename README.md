@@ -88,7 +88,7 @@ iframe{
 <body class="bg-gray-100">
 
 <header class="text-center py-12">
-  <h1 class="text-3xl font-bold">Debeatzgh AI Hub</h1>
+  <h1 class="text-3xl font-bold">AI Hub</h1>
   <p class="text-gray-600 mt-2">All your platforms in one smart workspace</p>
   <button onclick="openLauncher('wordpress')" class="mt-6 bg-blue-600 text-white px-8 py-3 rounded-xl font-bold">
     Launch Hub
@@ -117,7 +117,7 @@ iframe{
 
     <div class="mobile-tabs">
       <div class="mobile-tab active" data-tab="wordpress" onclick="switchTab('wordpress')">Web</div>
-      <div class="mobile-tab" data-tab="blogger" onclick="switchTab('blogger')">Home</div>
+      <div class="mobile-tab" data-tab="blogger" onclick="switchTab('blogger')">Tools</div>
       <div class="mobile-tab" data-tab="slides" onclick="switchTab('slides')">Offers</div>
       <div class="mobile-tab" data-tab="sign" onclick="switchTab('sign')">Sign</div>
       <div class="mobile-tab" data-tab="about" onclick="switchTab('about')">Suggest</div>
