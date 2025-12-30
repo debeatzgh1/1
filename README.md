@@ -1,13 +1,13 @@
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Debeatzgh Multi-Tab Launcher</title>
+<title> Multi-Tab Launcher</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
-/* ===== MODAL ===== */
 .modal-bg{
   display:none;
   position:fixed;
@@ -23,8 +23,6 @@
   display:flex;
   flex-direction:column;
 }
-
-/* ===== DESKTOP TABS ===== */
 .tabs{
   display:flex;
   gap:6px;
@@ -43,8 +41,6 @@
   background:#2563eb;
   color:#fff;
 }
-
-/* ===== CONTROLS ===== */
 .controls{
   display:flex;
   gap:8px;
@@ -60,18 +56,12 @@
   font-weight:700;
   cursor:pointer;
 }
-
-/* ===== IFRAME ===== */
 iframe{
   flex:1;
   width:100%;
   border:none;
 }
-
-/* ===== MOBILE BOTTOM TABS ===== */
-.mobile-tabs{
-  display:none;
-}
+.mobile-tabs{display:none}
 @media (max-width:768px){
   .tabs{display:none}
   .mobile-tabs{
@@ -100,26 +90,22 @@ iframe{
 <header class="text-center py-12">
   <h1 class="text-3xl font-bold">Debeatzgh AI Hub</h1>
   <p class="text-gray-600 mt-2">All your platforms in one smart workspace</p>
-
   <button onclick="openLauncher('wordpress')" class="mt-6 bg-blue-600 text-white px-8 py-3 rounded-xl font-bold">
     Launch Hub
   </button>
 </header>
 
-<!-- MODAL -->
 <div class="modal-bg" id="modal">
   <div class="modal-box" id="modalBox">
 
-    <!-- DESKTOP TABS -->
     <div class="tabs">
-      <div class="tab active" data-tab="wordpress" onclick="switchTab('wordpress')">WordPress</div>
-      <div class="tab" data-tab="blogger" onclick="switchTab('blogger')">Blogger</div>
-      <div class="tab" data-tab="slides" onclick="switchTab('slides')">Slides</div>
+      <div class="tab active" data-tab="wordpress" onclick="switchTab('wordpress')">Web</div>
+      <div class="tab" data-tab="blogger" onclick="switchTab('blogger')">Home</div>
+      <div class="tab" data-tab="slides" onclick="switchTab('slides')">Offers</div>
       <div class="tab" data-tab="sign" onclick="switchTab('sign')">Sign</div>
-      <div class="tab" data-tab="about" onclick="switchTab('about')">About</div>
+      <div class="tab" data-tab="about" onclick="switchTab('about')">Suggest</div>
     </div>
 
-    <!-- CONTROLS -->
     <div class="controls">
       <div class="ctrl-btn" onclick="goBack()">⟵</div>
       <div class="ctrl-btn" onclick="goForward()">⟶</div>
@@ -127,16 +113,14 @@ iframe{
       <div class="ctrl-btn" onclick="closeLauncher()">✕</div>
     </div>
 
-    <!-- IFRAME -->
     <iframe id="frame"></iframe>
 
-    <!-- MOBILE TABS -->
     <div class="mobile-tabs">
-      <div class="mobile-tab active" data-tab="wordpress" onclick="switchTab('wordpress')">WP</div>
-      <div class="mobile-tab" data-tab="blogger" onclick="switchTab('blogger')">Blog</div>
-      <div class="mobile-tab" data-tab="slides" onclick="switchTab('slides')">Slides</div>
+      <div class="mobile-tab active" data-tab="wordpress" onclick="switchTab('wordpress')">Web</div>
+      <div class="mobile-tab" data-tab="blogger" onclick="switchTab('blogger')">Home</div>
+      <div class="mobile-tab" data-tab="slides" onclick="switchTab('slides')">Offers</div>
       <div class="mobile-tab" data-tab="sign" onclick="switchTab('sign')">Sign</div>
-      <div class="mobile-tab" data-tab="about" onclick="switchTab('about')">About</div>
+      <div class="mobile-tab" data-tab="about" onclick="switchTab('about')">Suggest</div>
     </div>
 
   </div>
@@ -148,27 +132,15 @@ const frame = document.getElementById("frame");
 const tabs = document.querySelectorAll(".tab");
 const mobileTabs = document.querySelectorAll(".mobile-tab");
 
-/* ===== URL MAP ===== */
+/* ✅ URL MAP (UNCHANGED URLs) */
 const URLS = {
-  Web: "https://msha.ke/debeatzgh/",
-  Home: "https://docs.google.com/document/d/1yTeRMaF8GEkTZf34EK7eOdxe6sCOCNxX/edit?usp=drivesdk&ouid=116845182021782803040&rtpof=true&sd=true",
-  offers: "https://docs.google.com/presentation/d/1F7_mDSijSndGly1Q05YqOZHI1LaSjjt7/preview",
+  wordpress: "https://msha.ke/debeatzgh/",
+  blogger: "https://docs.google.com/document/d/1yTeRMaF8GEkTZf34EK7eOdxe6sCOCNxX/edit?usp=drivesdk&ouid=116845182021782803040&rtpof=true&sd=true",
+  slides: "https://docs.google.com/presentation/d/1F7_mDSijSndGly1Q05YqOZHI1LaSjjt7/preview",
   sign: "https://docs.google.com/forms/d/e/1FAIpQLSdXCPUz1JBq0W8MHN9VOE0p6cnp5Wtr74Ox2gqLLyzKi0UwKA/viewform",
-  suggest: "https://form.jotform.com/241335470278053"
+  about: "https://form.jotform.com/241335470278053"
 };
 
-/* ===== SAME FRAME RULES ===== */
-const SAME_FRAME_DOMAINS = [
-  "wordpress.com",
-  "blogspot.com",
-  "docs.google.com",
-  "github.io",
-  "jotform.com",
-  "tally.so",
-  "msha.ke"
-];
-
-/* ===== HISTORY ===== */
 let historyStack = [];
 let historyIndex = -1;
 
@@ -181,11 +153,11 @@ function load(url){
   }
 }
 
-/* ===== OPEN / CLOSE ===== */
 function openLauncher(tab){
   modal.style.display="flex";
   switchTab(tab);
 }
+
 function closeLauncher(){
   modal.style.display="none";
   frame.src="";
@@ -194,19 +166,13 @@ function closeLauncher(){
   if(document.fullscreenElement) document.exitFullscreen();
 }
 
-/* ===== SWITCH TAB ===== */
 function switchTab(tab){
   tabs.forEach(t=>t.classList.remove("active"));
   mobileTabs.forEach(t=>t.classList.remove("active"));
-
-  document.querySelectorAll(`[data-tab="${tab}"]`).forEach(t=>{
-    t.classList.add("active");
-  });
-
+  document.querySelectorAll(`[data-tab="${tab}"]`).forEach(t=>t.classList.add("active"));
   load(URLS[tab]);
 }
 
-/* ===== NAVIGATION ===== */
 function goBack(){
   if(historyIndex>0){
     historyIndex--;
@@ -220,37 +186,11 @@ function goForward(){
   }
 }
 
-/* ===== FULLSCREEN ===== */
 function toggleFS(){
   const el=document.getElementById("modalBox");
   if(!document.fullscreenElement) el.requestFullscreen();
   else document.exitFullscreen();
 }
-
-/* ===== IFRAME LINK RULES ===== */
-frame.addEventListener("load", ()=>{
-  try{
-    const doc = frame.contentDocument || frame.contentWindow.document;
-    doc.querySelectorAll("a[href]").forEach(link=>{
-      link.addEventListener("click", e=>{
-        const href = link.href;
-        if(!href) return;
-
-        const sameFrame = SAME_FRAME_DOMAINS.some(d=>href.includes(d));
-
-        if(sameFrame){
-          e.preventDefault();
-          load(href);
-        }else{
-          link.target="_blank";
-          link.rel="noopener noreferrer";
-        }
-      });
-    });
-  }catch(err){
-    console.warn("Cross-domain restriction applied");
-  }
-});
 </script>
 
 </body>
