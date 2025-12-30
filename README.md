@@ -135,10 +135,10 @@ const mobileTabs = document.querySelectorAll(".mobile-tab");
 /* ✅ URL MAP (UNCHANGED URLs) */
 const URLS = {
   wordpress: "https://msha.ke/debeatzgh/",
-  blogger: "https://docs.google.com/document/d/1yTeRMaF8GEkTZf34EK7eOdxe6sCOCNxX/edit?usp=drivesdk&ouid=116845182021782803040&rtpof=true&sd=true",
+  Tools: "https://debeatzgh1.github.io/debeatzgh/",
   slides: "https://docs.google.com/document/d/1yTeRMaF8GEkTZf34EK7eOdxe6sCOCNxX/edit?usp=drivesdk&ouid=116845182021782803040&rtpof=true&sd=true",
   sign: "https://docs.google.com/forms/d/e/1FAIpQLSdXCPUz1JBq0W8MHN9VOE0p6cnp5Wtr74Ox2gqLLyzKi0UwKA/viewform",
-  about: "https://form.jotform.com/241335470278053"
+  sugg: "https://form.jotform.com/241335470278053"
 };
 
 let historyStack = [];
