@@ -120,7 +120,7 @@ tailwind.config = {
 </footer>
 
 <!-- FLOATING BUTTON -->
-<button onclick="openFrame('https://debeatzgh1.github.io/ai-chat/')" class="fixed bottom-6 right-6 bg-accent text-white w-14 h-14 rounded-full shadow-lg floating-btn text-2xl">
+<button onclick="openFrame('https://docs.google.com/document/d/1sdrpMWndvFKiwBfzYa7mZE7TjJ-vaMYF/edit?usp=drivesdk&ouid=116845182021782803040&rtpof=true&sd=true')" class="fixed bottom-6 right-6 bg-accent text-white w-14 h-14 rounded-full shadow-lg floating-btn text-2xl">
   ☰
 </button>
 
