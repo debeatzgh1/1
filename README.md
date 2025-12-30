@@ -1,180 +1,256 @@
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Creators Hub– AI Tools, Side Hustles & Digital Growth</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Debeatzgh Multi-Tab Launcher</title>
 
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
-<!-- Tailwind -->
 <script src="https://cdn.tailwindcss.com"></script>
 
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        primary: '#0F2A44',
-        secondary: '#1E88E5',
-        accent: '#00C2A8',
-        highlight: '#6C63FF',
-        bg: '#F8FAFC'
-      },
-      fontFamily: {
-        heading: ['Poppins','sans-serif'],
-        body: ['Inter','sans-serif']
-      }
-    }
+<style>
+/* ===== MODAL ===== */
+.modal-bg{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.75);
+  backdrop-filter:blur(6px);
+  z-index:9999;
+}
+.modal-box{
+  width:100%;
+  height:100%;
+  background:#fff;
+  display:flex;
+  flex-direction:column;
+}
+
+/* ===== DESKTOP TABS ===== */
+.tabs{
+  display:flex;
+  gap:6px;
+  padding:10px;
+  background:#0f172a;
+}
+.tab{
+  padding:8px 14px;
+  border-radius:10px;
+  font-size:13px;
+  font-weight:700;
+  color:#cbd5f5;
+  cursor:pointer;
+}
+.tab.active{
+  background:#2563eb;
+  color:#fff;
+}
+
+/* ===== CONTROLS ===== */
+.controls{
+  display:flex;
+  gap:8px;
+  padding:8px 10px;
+  background:#020617;
+}
+.ctrl-btn{
+  background:rgba(255,255,255,.15);
+  color:#fff;
+  padding:6px 12px;
+  border-radius:8px;
+  font-size:12px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+/* ===== IFRAME ===== */
+iframe{
+  flex:1;
+  width:100%;
+  border:none;
+}
+
+/* ===== MOBILE BOTTOM TABS ===== */
+.mobile-tabs{
+  display:none;
+}
+@media (max-width:768px){
+  .tabs{display:none}
+  .mobile-tabs{
+    display:flex;
+    justify-content:space-around;
+    background:#020617;
+    padding:6px 0;
+  }
+  .mobile-tab{
+    color:#cbd5f5;
+    font-size:12px;
+    font-weight:700;
+    padding:6px 8px;
+  }
+  .mobile-tab.active{
+    color:#fff;
+    background:#2563eb;
+    border-radius:8px;
   }
 }
-</script>
-
-<style>
-@keyframes pulseSoft {
-  0%,100% { transform: scale(1); }
-  50% { transform: scale(1.08); }
-}
-.floating-btn { animation: pulseSoft 1.8s infinite; }
 </style>
 </head>
 
-<body class="bg-bg font-body text-gray-800">
+<body class="bg-gray-100">
 
-<!-- NAVBAR -->
-<header class="sticky top-0 z-40 bg-white shadow-sm">
-  <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-    <button onclick="openFrame('https://debeatzgh1.github.io/Home-/')" class="text-2xl font-heading font-bold text-primary">
-      Debeatzgh
-    </button>
-    <nav class="hidden md:flex gap-8 font-medium">
-      <button onclick="openFrame('https://debeatzgh1.github.io/Home-/')" class="hover:text-secondary">Home</button>
-      <button onclick="openFrame('https://docs.google.com/document/d/1yTeRMaF8GEkTZf34EK7eOdxe6sCOCNxX/edit?usp=drivesdk&ouid=116845182021782803040&rtpof=true&sd=true')" class="hover:text-secondary">Products</button>
-      <button onclick="openFrame('https://docs.google.com/document/d/1ECpgcokd44w2MbWbYMvykJ1CLoeU1eMa/edit?usp=drivesdk&ouid=116845182021782803040&rtpof=true&sd=true')" class="hover:text-secondary">About>
-      <button onclick="openFrame('https://docs.google.com/document/d/1sdrpMWndvFKiwBfzYa7mZE7TjJ-vaMYF/edit?usp=drivesdk&ouid=116845182021782803040&rtpof=true&sd=true')" class="hover:text-secondary">Milkshake</button>
-    </nav>
-    <button onclick="openFrame('https://docs.google.com/document/d/1sdrpMWndvFKiwBfzYa7mZE7TjJ-vaMYF/edit?usp=drivesdk&ouid=116845182021782803040&rtpof=true&sd=true')" class="bg-secondary text-white px-5 py-2 rounded-xl shadow hover:scale-105 transition">
-      Open Hub
-    </button>
-  </div>
+<header class="text-center py-12">
+  <h1 class="text-3xl font-bold">Debeatzgh AI Hub</h1>
+  <p class="text-gray-600 mt-2">All your platforms in one smart workspace</p>
+
+  <button onclick="openLauncher('wordpress')" class="mt-6 bg-blue-600 text-white px-8 py-3 rounded-xl font-bold">
+    Launch Hub
+  </button>
 </header>
 
-<!-- HERO -->
-<section class="max-w-7xl mx-auto px-4 py-20 grid md:grid-cols-2 gap-12 items-center">
-  <div>
-    <h2 class="text-4xl md:text-5xl font-heading font-bold text-primary">
-      Build Income with <span class="text-secondary">AI Tools</span> & Smart Side Hustles
-    </h2>
-    <p class="mt-6 text-lg text-gray-600">
-      AI tools, blogging guides, and digital products — all curated to help you earn online.
-    </p>
-    <div class="mt-8 flex gap-4">
-      <button onclick="openFrame('https://debeatzgh1.github.io/-My-Brand-Online-Digital-Products-Affiliate-Shop/')" class="bg-secondary text-white px-6 py-3 rounded-xl shadow hover:scale-105 transition">
-        View Products
-      </button>
-      <button onclick="openFrame('https://debeatzgh1.github.io/The-Ultimate-Guide-to-Side-Hustle/')" class="border border-secondary text-secondary px-6 py-3 rounded-xl hover:bg-secondary hover:text-white transition">
-        Side Hustle Guide
-      </button>
+<!-- MODAL -->
+<div class="modal-bg" id="modal">
+  <div class="modal-box" id="modalBox">
+
+    <!-- DESKTOP TABS -->
+    <div class="tabs">
+      <div class="tab active" data-tab="wordpress" onclick="switchTab('wordpress')">WordPress</div>
+      <div class="tab" data-tab="blogger" onclick="switchTab('blogger')">Blogger</div>
+      <div class="tab" data-tab="slides" onclick="switchTab('slides')">Slides</div>
+      <div class="tab" data-tab="sign" onclick="switchTab('sign')">Sign</div>
+      <div class="tab" data-tab="about" onclick="switchTab('about')">About</div>
     </div>
-  </div>
 
-  <div class="bg-white rounded-xl shadow-lg p-6">
-    <img src="https://images.unsplash.com/photo-1674027444485-cec3da58eef4" class="rounded-xl">
-  </div>
-</section>
-
-<!-- FEATURES -->
-<section class="bg-white py-16">
-  <div class="max-w-7xl mx-auto px-4">
-    <h3 class="text-3xl font-heading font-semibold text-center text-primary">
-      What You’ll Find
-    </h3>
-
-    <div class="grid md:grid-cols-3 gap-8 mt-12">
-      <button onclick="openFrame('https://debeatzgh.wordpress.com/')" class="p-6 rounded-xl shadow hover:shadow-lg transition text-left">
-        <span class="bg-accent text-white px-3 py-1 rounded-full text-sm">HUB</span>
-        <h4 class="mt-4 font-heading text-xl font-semibold">Central Link Hub</h4>
-        <p class="mt-2 text-gray-600">Access  tools, products & platforms.</p>
-      </button>
-
-      <button onclick="openFrame('https://docs.google.com/forms/d/e/1FAIpQLSdXCPUz1JBq0W8MHN9VOE0p6cnp5Wtr74Ox2gqLLyzKi0UwKA/viewform?usp=dialog')" class="p-6 rounded-xl shadow hover:shadow-lg transition text-left">
-        <span class="bg-highlight text-white px-3 py-1 rounded-full text-sm">TOOLS</span>
-        <h4 class="mt-4 font-heading text-xl font-semibold">Digital Tools</h4>
-        <p class="mt-2 text-gray-600">AI prompts, resources & affiliate tools.</p>
-      </button>
-
-      <button onclick="openFrame('https://debeatzgh1.github.io/debeatzgh/')" class="p-6 rounded-xl shadow hover:shadow-lg transition text-left">
-        <span class="bg-secondary text-white px-3 py-1 rounded-full text-sm">GUIDE</span>
-        <h4 class="mt-4 font-heading text-xl font-semibold">Side Hustle Playbook</h4>
-        <p class="mt-2 text-gray-600">Proven ways to start earning online.</p>
-      </button>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="bg-primary text-gray-300 py-10 text-center">
-  <h4 class="font-heading text-xl text-white">Debeatzgh</h4>
-  <p class="mt-2 text-sm">AI • Blogging • Side Hustles • Digital Growth</p>
-  <p class="mt-4 text-xs opacity-70">© 2025 Debeatzgh</p>
-</footer>
-
-<!-- FLOATING BUTTON -->
-<button onclick="openFrame('https://www.jotform.com/build/241335470278053/publish')" class="fixed bottom-6 right-6 bg-accent text-white w-14 h-14 rounded-full shadow-lg floating-btn text-2xl">
-  ☰
-</button>
-
-<!-- IFRAME OVERLAY -->
-<div id="iframeOverlay" class="fixed inset-0 bg-black/70 hidden z-50">
-  <div class="absolute inset-4 bg-white rounded-xl overflow-hidden flex flex-col">
-    
     <!-- CONTROLS -->
-    <div class="flex items-center justify-between bg-primary text-white px-4 py-2">
-      <div class="flex gap-4 text-lg">
-        <button onclick="frameBack()">⟵</button>
-        <button onclick="frameForward()">⟶</button>
-      </div>
-      <div class="flex gap-4 text-lg">
-        <button onclick="toggleFullscreen()">⛶</button>
-        <button onclick="closeFrame()">✕</button>
-      </div>
+    <div class="controls">
+      <div class="ctrl-btn" onclick="goBack()">⟵</div>
+      <div class="ctrl-btn" onclick="goForward()">⟶</div>
+      <div class="ctrl-btn" onclick="toggleFS()">⛶</div>
+      <div class="ctrl-btn" onclick="closeLauncher()">✕</div>
     </div>
 
     <!-- IFRAME -->
-    <iframe id="contentFrame" class="flex-1 w-full border-none"></iframe>
+    <iframe id="frame"></iframe>
+
+    <!-- MOBILE TABS -->
+    <div class="mobile-tabs">
+      <div class="mobile-tab active" data-tab="wordpress" onclick="switchTab('wordpress')">WP</div>
+      <div class="mobile-tab" data-tab="blogger" onclick="switchTab('blogger')">Blog</div>
+      <div class="mobile-tab" data-tab="slides" onclick="switchTab('slides')">Slides</div>
+      <div class="mobile-tab" data-tab="sign" onclick="switchTab('sign')">Sign</div>
+      <div class="mobile-tab" data-tab="about" onclick="switchTab('about')">About</div>
+    </div>
+
   </div>
 </div>
 
 <script>
-const frame = document.getElementById('contentFrame');
-const overlay = document.getElementById('iframeOverlay');
+const modal = document.getElementById("modal");
+const frame = document.getElementById("frame");
+const tabs = document.querySelectorAll(".tab");
+const mobileTabs = document.querySelectorAll(".mobile-tab");
 
-function openFrame(url){
+/* ===== URL MAP ===== */
+const URLS = {
+  Web: "https://msha.ke/debeatzgh/",
+  Home: "https://docs.google.com/document/d/1yTeRMaF8GEkTZf34EK7eOdxe6sCOCNxX/edit?usp=drivesdk&ouid=116845182021782803040&rtpof=true&sd=true",
+  offers: "https://docs.google.com/presentation/d/1F7_mDSijSndGly1Q05YqOZHI1LaSjjt7/preview",
+  sign: "https://docs.google.com/forms/d/e/1FAIpQLSdXCPUz1JBq0W8MHN9VOE0p6cnp5Wtr74Ox2gqLLyzKi0UwKA/viewform",
+  suggest: "https://form.jotform.com/241335470278053"
+};
+
+/* ===== SAME FRAME RULES ===== */
+const SAME_FRAME_DOMAINS = [
+  "wordpress.com",
+  "blogspot.com",
+  "docs.google.com",
+  "github.io",
+  "jotform.com",
+  "tally.so",
+  "msha.ke"
+];
+
+/* ===== HISTORY ===== */
+let historyStack = [];
+let historyIndex = -1;
+
+function load(url){
   frame.src = url;
-  overlay.classList.remove('hidden');
-}
-
-function closeFrame(){
-  frame.src = '';
-  overlay.classList.add('hidden');
-}
-
-function frameBack(){
-  frame.contentWindow.history.back();
-}
-
-function frameForward(){
-  frame.contentWindow.history.forward();
-}
-
-function toggleFullscreen(){
-  const box = overlay.querySelector('div');
-  if(!document.fullscreenElement){
-    box.requestFullscreen();
-  } else {
-    document.exitFullscreen();
+  if(historyStack[historyIndex] !== url){
+    historyStack = historyStack.slice(0, historyIndex + 1);
+    historyStack.push(url);
+    historyIndex++;
   }
 }
+
+/* ===== OPEN / CLOSE ===== */
+function openLauncher(tab){
+  modal.style.display="flex";
+  switchTab(tab);
+}
+function closeLauncher(){
+  modal.style.display="none";
+  frame.src="";
+  historyStack=[];
+  historyIndex=-1;
+  if(document.fullscreenElement) document.exitFullscreen();
+}
+
+/* ===== SWITCH TAB ===== */
+function switchTab(tab){
+  tabs.forEach(t=>t.classList.remove("active"));
+  mobileTabs.forEach(t=>t.classList.remove("active"));
+
+  document.querySelectorAll(`[data-tab="${tab}"]`).forEach(t=>{
+    t.classList.add("active");
+  });
+
+  load(URLS[tab]);
+}
+
+/* ===== NAVIGATION ===== */
+function goBack(){
+  if(historyIndex>0){
+    historyIndex--;
+    frame.src = historyStack[historyIndex];
+  }
+}
+function goForward(){
+  if(historyIndex<historyStack.length-1){
+    historyIndex++;
+    frame.src = historyStack[historyIndex];
+  }
+}
+
+/* ===== FULLSCREEN ===== */
+function toggleFS(){
+  const el=document.getElementById("modalBox");
+  if(!document.fullscreenElement) el.requestFullscreen();
+  else document.exitFullscreen();
+}
+
+/* ===== IFRAME LINK RULES ===== */
+frame.addEventListener("load", ()=>{
+  try{
+    const doc = frame.contentDocument || frame.contentWindow.document;
+    doc.querySelectorAll("a[href]").forEach(link=>{
+      link.addEventListener("click", e=>{
+        const href = link.href;
+        if(!href) return;
+
+        const sameFrame = SAME_FRAME_DOMAINS.some(d=>href.includes(d));
+
+        if(sameFrame){
+          e.preventDefault();
+          load(href);
+        }else{
+          link.target="_blank";
+          link.rel="noopener noreferrer";
+        }
+      });
+    });
+  }catch(err){
+    console.warn("Cross-domain restriction applied");
+  }
+});
 </script>
 
 </body>
