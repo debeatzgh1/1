@@ -49,8 +49,8 @@ tailwind.config = {
     </button>
     <nav class="hidden md:flex gap-8 font-medium">
       <button onclick="openFrame('https://debeatzgh1.github.io/Home-/')" class="hover:text-secondary">Home</button>
-      <button onclick="openFrame('https://debeatzgh1.github.io/-My-Brand-Online-Digital-Products-Affiliate-Shop/')" class="hover:text-secondary">Products</button>
-      <button onclick="openFrame('https://debeatzgh1.github.io/The-Ultimate-Guide-to-Side-Hustle/')" class="hover:text-secondary">Side Hustle</button>
+      <button onclick="openFrame('https://docs.google.com/document/d/1yTeRMaF8GEkTZf34EK7eOdxe6sCOCNxX/edit?usp=drivesdk&ouid=116845182021782803040&rtpof=true&sd=true')" class="hover:text-secondary">Products</button>
+      <button onclick="openFrame('https://docs.google.com/document/d/1ECpgcokd44w2MbWbYMvykJ1CLoeU1eMa/edit?usp=drivesdk&ouid=116845182021782803040&rtpof=true&sd=true')" class="hover:text-secondary">About>
       <button onclick="openFrame('https://docs.google.com/document/d/1sdrpMWndvFKiwBfzYa7mZE7TjJ-vaMYF/edit?usp=drivesdk&ouid=116845182021782803040&rtpof=true&sd=true')" class="hover:text-secondary">Milkshake</button>
     </nav>
     <button onclick="openFrame('https://docs.google.com/document/d/1sdrpMWndvFKiwBfzYa7mZE7TjJ-vaMYF/edit?usp=drivesdk&ouid=116845182021782803040&rtpof=true&sd=true')" class="bg-secondary text-white px-5 py-2 rounded-xl shadow hover:scale-105 transition">
