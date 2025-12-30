@@ -51,9 +51,9 @@ tailwind.config = {
       <button onclick="openFrame('https://debeatzgh1.github.io/Home-/')" class="hover:text-secondary">Home</button>
       <button onclick="openFrame('https://debeatzgh1.github.io/-My-Brand-Online-Digital-Products-Affiliate-Shop/')" class="hover:text-secondary">Products</button>
       <button onclick="openFrame('https://debeatzgh1.github.io/The-Ultimate-Guide-to-Side-Hustle/')" class="hover:text-secondary">Side Hustle</button>
-      <button onclick="openFrame('https://msha.ke/debeatzgh')" class="hover:text-secondary">Milkshake</button>
+      <button onclick="openFrame('https://docs.google.com/document/d/1sdrpMWndvFKiwBfzYa7mZE7TjJ-vaMYF/edit?usp=drivesdk&ouid=116845182021782803040&rtpof=true&sd=true')" class="hover:text-secondary">Milkshake</button>
     </nav>
-    <button onclick="openFrame('https://msha.ke/debeatzgh')" class="bg-secondary text-white px-5 py-2 rounded-xl shadow hover:scale-105 transition">
+    <button onclick="openFrame('https://docs.google.com/document/d/1sdrpMWndvFKiwBfzYa7mZE7TjJ-vaMYF/edit?usp=drivesdk&ouid=116845182021782803040&rtpof=true&sd=true')" class="bg-secondary text-white px-5 py-2 rounded-xl shadow hover:scale-105 transition">
       Open Hub
     </button>
   </div>
@@ -94,7 +94,7 @@ tailwind.config = {
       <button onclick="openFrame('https://debeatzgh.wordpress.com/')" class="p-6 rounded-xl shadow hover:shadow-lg transition text-left">
         <span class="bg-accent text-white px-3 py-1 rounded-full text-sm">HUB</span>
         <h4 class="mt-4 font-heading text-xl font-semibold">Central Link Hub</h4>
-        <p class="mt-2 text-gray-600">Access all Debeatzgh tools, products & platforms.</p>
+        <p class="mt-2 text-gray-600">Access  tools, products & platforms.</p>
       </button>
 
       <button onclick="openFrame('https://docs.google.com/forms/d/e/1FAIpQLSdXCPUz1JBq0W8MHN9VOE0p6cnp5Wtr74Ox2gqLLyzKi0UwKA/viewform?usp=dialog')" class="p-6 rounded-xl shadow hover:shadow-lg transition text-left">
@@ -120,7 +120,7 @@ tailwind.config = {
 </footer>
 
 <!-- FLOATING BUTTON -->
-<button onclick="openFrame('https://docs.google.com/document/d/1sdrpMWndvFKiwBfzYa7mZE7TjJ-vaMYF/edit?usp=drivesdk&ouid=116845182021782803040&rtpof=true&sd=true')" class="fixed bottom-6 right-6 bg-accent text-white w-14 h-14 rounded-full shadow-lg floating-btn text-2xl">
+<button onclick="openFrame('https://www.jotform.com/build/241335470278053/publish')" class="fixed bottom-6 right-6 bg-accent text-white w-14 h-14 rounded-full shadow-lg floating-btn text-2xl">
   ☰
 </button>
 
