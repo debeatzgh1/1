@@ -138,7 +138,7 @@ const URLS = {
   blogger: "https://debeatzgh1.github.io/debeatzgh/",
   slides: "https://docs.google.com/document/d/1yTeRMaF8GEkTZf34EK7eOdxe6sCOCNxX/edit?usp=drivesdk&ouid=116845182021782803040&rtpof=true&sd=true",
   sign: "https://docs.google.com/forms/d/e/1FAIpQLSdXCPUz1JBq0W8MHN9VOE0p6cnp5Wtr74Ox2gqLLyzKi0UwKA/viewform",
-  about: "https://form.jotform.com/241335470278053"
+  about: "https://form.svhrt.com/60f4a0aeedc1993c8c7b3989"
 };
 
 let historyStack = [];
