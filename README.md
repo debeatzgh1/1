@@ -136,7 +136,7 @@ const mobileTabs = document.querySelectorAll(".mobile-tab");
 const URLS = {
   wordpress: "https://msha.ke/debeatzgh/",
   blogger: "https://debeatzgh1.github.io/debeatzgh/",
-  slides: "https://docs.google.com/document/d/1yTeRMaF8GEkTZf34EK7eOdxe6sCOCNxX/edit?usp=drivesdk&ouid=116845182021782803040&rtpof=true&sd=true",
+  slides: "https://mailchi.mp/3ab79c366503/iexz1xj8v3",
   sign: "https://docs.google.com/forms/d/e/1FAIpQLSdXCPUz1JBq0W8MHN9VOE0p6cnp5Wtr74Ox2gqLLyzKi0UwKA/viewform",
   about: "https://form.svhrt.com/60f4a0aeedc1993c8c7b3989"
 };
