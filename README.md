@@ -195,3 +195,6 @@ function toggleFS(){
 
 </body>
 </html>
+<!-- Elfsight AI Chatbot | Assistant Bot -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
+<div class="elfsight-app-2552d2e4-68c0-45de-b815-0f6717b1a0e6" data-elfsight-app-lazy></div>
