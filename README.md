@@ -307,8 +307,8 @@ const mobileTabs = document.querySelectorAll(".mobile-tab");
 const URLS = {
   wordpress: "https://msha.ke/debeatzgh/",
   blogger: "https://debeatzgh1.github.io/debeatzgh/",
-  slides: "https://mailchi.mp/3ab79c366503/iexz1xj8v3",
-  sign: "https://mailchi.mp/0a569aa1173e/ai-decoder",
+  slides: "https://beatzde4.blogspot.com/p/advertise-online-for-free.html",
+  sign: "https://beatzde4.blogspot.com/p/advertise-online-for-free.html",
   about: "https://form.svhrt.com/60f4a0aeedc1993c8c7b3989"
 };
 
