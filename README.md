@@ -16,9 +16,9 @@
 <style>
     .firebase-node-mini {
         position: fixed;
-        bottom: 25px;
+        top: 25px;
         left: 25px; /* Positioned left to avoid clashing with the 'Suggest' button */
-        width: 180px;
+        width: 150px;
         height: 42px;
         background: rgba(10, 10, 12, 0.85);
         backdrop-filter: blur(12px);
