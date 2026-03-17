@@ -1,256 +1,219 @@
-<div id="smart-float-container" class="float-wrapper">
-    <div id="float-nudge" class="float-nudge">
-        <p>Claim your <strong>.wordpress.com</strong> site!</p>
-        <button onclick="dismissNudge()" class="nudge-close">×</button>
-    </div>
 
-    <div class="float-main-btn" onclick="launchWPSignup()">
-        <i class="fab fa-wordpress"></i>
-        <span class="btn-label">Create Site</span>
-    </div>
-</div>
-
-<style>
-    .float-wrapper {
-        position: fixed;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-        z-index: 10005;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-
-    /* Floating Nudge Bubble */
-    .float-nudge {
-        background: rgba(10, 10, 12, 0.9);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(0, 242, 255, 0.3);
-        padding: 8px 15px;
-        border-radius: 12px;
-        color: #f0f6fc;
-        font-size: 11px;
-        white-space: nowrap;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-        display: none; /* Controlled by JS */
-        animation: slideUpFade 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        align-items: center;
-        gap: 10px;
-    }
-
-    .nudge-close {
-        background: none;
-        border: none;
-        color: #64748b;
-        font-size: 16px;
-        cursor: pointer;
-        padding: 0 2px;
-        line-height: 1;
-    }
-
-    .nudge-close:hover { color: #00f2ff; }
-
-    /* Main Button */
-    .float-main-btn {
-        background: #00f2ff;
-        color: #000;
-        padding: 10px 20px;
-        border-radius: 99px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        cursor: pointer;
-        font-weight: 800;
-        text-transform: uppercase;
-        font-size: 10px;
-        letter-spacing: 1px;
-        box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
-        transition: all 0.3s ease;
-    }
-
-    .float-main-btn:hover {
-        transform: translateY(-3px) scale(1.05);
-        background: #fff;
-        box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
-    }
-
-    .float-main-btn i { font-size: 14px; }
-
-    @keyframes slideUpFade {
-        from { opacity: 0; transform: translateY(15px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 480px) {
-        .float-main-btn { padding: 10px 16px; }
-        .btn-label { display: none; } /* On mobile, only show icon to save space */
-    }
-</style>
-
-<script>
-    const NUDGE_KEY = 'wp_nudge_dismissed';
-
-    function showNudge() {
-        const isDismissed = localStorage.getItem(NUDGE_KEY);
-        if (!isDismissed) {
-            document.getElementById('float-nudge').style.display = 'flex';
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleek Floating Banner</title>
+    <style>
+        /* Modern CSS reset for consistency */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-    }
 
-    function dismissNudge() {
-        document.getElementById('float-nudge').style.display = 'none';
-        // Remember dismissal for 24h
-        localStorage.setItem(NUDGE_KEY, 'true');
-    }
-
-    function launchWPSignup() {
-        const targetUrl = "https://debeatzgh1.github.io/Blogger-sign-up-button-/";
-        
-        // Use existing overlay logic if available
-        if (typeof openLink === "function") {
-            openLink(targetUrl);
-        } else if (typeof openFrame === "function") {
-            openFrame(targetUrl);
-        } else {
-            window.open(targetUrl, '_blank');
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            min-height: 200vh; /* Adds scrollable height to visualize the fixed positioning */
+            background-color: #121212; /* A dark, neutral background */
+            color: #fff;
         }
-    }
 
-    // Auto-popup nudge after 8 seconds
-    window.addEventListener('load', () => {
-        setTimeout(showNudge, 8000);
-    });
-</script>
+        /* MAIN FLOATING BANNER CONTAINER
+           Fixed to the top center of the screen
+        */
+        #sleek-floating-banner {
+            position: fixed;
+            top: 20px; /* Slight offset from the top border */
+            left: 50%;
+            transform: translateX(-50%); /* Centers horizontally */
+            width: 340px; /* Compact, friendly width for desktop/mobile */
+            height: 52px;
+            background: rgba(30, 30, 30, 0.9); /* Dark semi-transparent background */
+            backdrop-filter: blur(10px); /* Modern 'glassmorphism' effect */
+            -webkit-backdrop-filter: blur(10px); /* Safari support */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle outline */
+            border-radius: 50px; /* Fully rounded edges for a sleek pill look */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Strong shadow for depth */
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Icon+Text on left, button on right */
+            padding: 0 6px 0 16px; /* Optimized padding for the components */
+            z-index: 10000; /* Ensures it stays above all other content */
+            overflow: hidden; /* Needed for the marquee slide effect */
+            
+            /* Entry animation */
+            animation: bannerEntry 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
 
+        /* Hover effect to highlight the interactive nature */
+        #sleek-floating-banner:hover {
+            transform: translateX(-50%) scale(1.03);
+            border-color: #FF1493; /* DeepPink border highlight on hover */
+        }
 
+        /* Banner entry animation (slides in and bounces slightly) */
+        @keyframes bannerEntry {
+            from { top: -60px; opacity: 0; }
+            to { top: 20px; opacity: 1; }
+        }
 
-<div id="firebase-mini-banner" class="firebase-node-mini">
-    <div class="mini-content">
-        <div class="status-indicator">
-            <span class="pulse-dot"></span>
+        /* --- MARQUEE SLIDER STYLES --- */
+        .banner-text-slider {
+            flex: 1;
+            height: 22px; /* Set height to constrain the text */
+            overflow: hidden; /* Masks text outside the area */
+            position: relative;
+            margin-right: 12px;
+        }
+
+        .slide-inner {
+            display: flex;
+            flex-direction: column; /* Stacks text vertically for sliding */
+            animation: verticalSlide 8s cubic-bezier(0.645, 0.045, 0.355, 1) infinite;
+        }
+
+        /* Text element properties */
+        .slide-inner span {
+            height: 22px; /* Matches parent height */
+            color: rgba(255, 255, 255, 0.9); /* Slightly off-white for better readability */
+            font-size: 0.8rem;
+            font-weight: 600; /* Semi-bold */
+            display: flex;
+            align-items: center;
+            gap: 8px; /* Gap for the indicator dot */
+            white-space: nowrap; /* Prevents text wrapping */
+        }
+
+        /* Color highlight for key inscriptions */
+        .highlight-text {
+            color: #FF1493; /* DeepPink */
+        }
+
+        /* Subtle animated dot for live status feel */
+        .live-dot {
+            width: 7px;
+            height: 7px;
+            background-color: #FF1493;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 20, 147, 0.8);
+            animation: pulseDot 1.5s infinite;
+        }
+
+        /* Pulse animation for the live dot */
+        @keyframes pulseDot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(1.2); }
+        }
+
+        /* Vertical Slide Keyframes:
+           4 states (3 texts + return to 1). 
+           Uses percentages to control pause duration at each state.
+        */
+        @keyframes verticalSlide {
+            0%, 22% { transform: translateY(0); } /* Pauses on Text 1 */
+            33%, 55% { transform: translateY(-22px); } /* Slides to and Pauses on Text 2 */
+            66%, 88% { transform: translateY(-44px); } /* Slides to and Pauses on Text 3 */
+            100% { transform: translateY(0); } /* Loops back to Text 1 smoothly */
+        }
+
+        /* --- BUTTON STYLES --- */
+        .launch-btn {
+            background-color: #FF1493; /* Vibrant DeepPink for main color */
+            color: #fff;
+            padding: 9px 20px;
+            border-radius: 25px; /* Rounded pill style to match banner */
+            font-size: 0.75rem;
+            font-weight: 900; /* Extra bold text for contrast */
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none; /* Removes underline for <a> tags */
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.3); /* Soft DeepPink glow */
+        }
+
+        /* Button interaction effects */
+        .launch-btn:hover {
+            background-color: #ff50ac; /* Lighter DeepPink on hover */
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(255, 20, 147, 0.5); /* Stronger DeepPink glow */
+        }
+
+        .launch-btn:active {
+            transform: translateY(1px) scale(0.98); /* Click interaction feedback */
+        }
+
+        /* --- SVG ICON STYLE --- */
+        .arrow-icon {
+            width: 13px;
+            height: 13px;
+            fill: none;
+            stroke: currentColor; /* Matches text color (#fff) */
+            stroke-width: 3;
+            transition: transform 0.3s ease;
+        }
+
+        /* Hover animation specifically for the icon */
+        .launch-btn:hover .arrow-icon {
+            transform: translateX(3px); /* Arrow nudges right on hover */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="sleek-floating-banner" onclick="openHomeLink()">
+        <div class="banner-text-slider">
+            <div class="slide-inner">
+                <span>
+                    <div class="live-dot"></div> 
+                    DeBeatz<span class="highlight-text">GH</span> Resource Hub
+                </span>
+                <span>
+                    <div class="live-dot"></div>
+                    Lifestyle <span class="highlight-text">&</span> Strategy
+                </span>
+                <span>
+                    <div class="live-dot"></div>
+                    Latest updates are <span class="highlight-text">Live</span>
+                </span>
+            </div>
         </div>
-        <div class="mini-text">
-            <span class="label">Internal Build</span>
-            <span class="version">v2.4-stable</span>
-        </div>
+
+        <button class="launch-btn" onclick="openHomeLink(event)">
+            OPEN 
+            <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+        </button>
     </div>
-    <button onclick="openFirebaseNode()" class="mini-action-btn">
-        <i class="fas fa-download"></i>
-    </button>
-</div>
 
-<style>
-    .firebase-node-mini {
-        position: fixed;
-        top: 25px;
-        left: 25px; /* Positioned left to avoid clashing with the 'Suggest' button */
-        width: 150px;
-        height: 42px;
-        background: rgba(10, 10, 12, 0.85);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(0, 242, 255, 0.2);
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 6px 0 12px;
-        z-index: 9999;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-        transition: all 0.3s ease;
-    }
-
-    .firebase-node-mini:hover {
-        border-color: #00f2ff;
-        transform: translateY(-3px);
-    }
-
-    .mini-content {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .status-indicator {
-        position: relative;
-        display: flex;
-        align-items: center;
-    }
-
-    .pulse-dot {
-        width: 6px;
-        height: 6px;
-        background: #00f2ff;
-        border-radius: 50%;
-        box-shadow: 0 0 8px #00f2ff;
-        animation: miniPulse 2s infinite;
-    }
-
-    @keyframes miniPulse {
-        0% { transform: scale(1); opacity: 1; }
-        50% { transform: scale(1.5); opacity: 0.5; }
-        100% { transform: scale(1); opacity: 1; }
-    }
-
-    .mini-text {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .mini-text .label {
-        font-size: 8px;
-        font-weight: 900;
-        text-transform: uppercase;
-        color: #475569;
-        letter-spacing: 1px;
-    }
-
-    .mini-text .version {
-        font-size: 10px;
-        font-family: monospace;
-        color: #f1f5f9;
-        font-weight: bold;
-    }
-
-    .mini-action-btn {
-        background: #00f2ff;
-        color: #000;
-        border: none;
-        width: 30px;
-        height: 30px;
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 12px;
-        cursor: pointer;
-        transition: 0.2s;
-    }
-
-    .mini-action-btn:hover {
-        background: #fff;
-        transform: scale(1.1);
-    }
-
-    /* Integration with your Master Overlay System */
-</style>
-
-<script>
-    function openFirebaseNode() {
-        // Using the same openLink/openFrame logic we built for your Hub
-        if (typeof openLink === "function") {
-            openLink('https://appdistribution.firebase.dev/i/dc2da2d4d3766b8a');
-        } else if (typeof openFrame === "function") {
-            openFrame('https://appdistribution.firebase.dev/i/dc2da2d4d3766b8a');
-        } else {
-            // Fallback for standalone use
-            window.open('https://appdistribution.firebase.dev/i/dc2da2d4d3766b8a', '_blank');
+    <script>
+        /**
+         * Opens the specified URL in a new tab without navigating
+         * away from the current page.
+         * @param {Event} e - Optional event object to prevent bubbling.
+         */
+        function openHomeLink(e) {
+            // Check if event exists and stop propagation so clicking the button
+            // doesn't also trigger the banner's onclick.
+            if (e && e.stopPropagation) {
+                e.stopPropagation();
+            }
+            
+            // window.open(url, '_blank') opens in a new tab.
+            window.open("https://debeatzgh1.github.io/Home-/", "_blank");
         }
-    }
-</script>
+    </script>
+
+</body>
+</html>
 
 
 
