@@ -208,7 +208,7 @@
             }
             
             // window.open(url, '_blank') opens in a new tab.
-            window.open("https://debeatzgh1.github.io/Home-/", "_blank");
+            window.open("https://debeatzgh1.github.io/ai-chat/", "_blank");
         }
     </script>
 
